@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <radialGradient id="btnGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="softGlow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect width="800" height="450" fill="#0f0f0f"/>
+
+  <!-- Step badge -->
+  <rect x="30" y="30" width="64" height="24" rx="12" fill="#dc2626"/>
+  <text x="62" y="47" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="11" font-weight="700">STEP 2</text>
+
+  <!-- Left text -->
+  <text x="30" y="100" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="26" font-weight="800">Find the Red</text>
+  <text x="30" y="133" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="26" font-weight="800">Download Button</text>
+  <text x="30" y="175" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="14">Scroll the page until you see</text>
+  <text x="30" y="196" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="14">the large red Download button.</text>
+
+  <!-- Look for this label -->
+  <text x="30" y="250" fill="#71717a" font-family="system-ui,sans-serif" font-size="12">LOOK FOR THIS:</text>
+  <rect x="30" y="260" width="200" height="46" rx="10" fill="#dc2626" filter="url(#softGlow)"/>
+  <text x="130" y="289" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="14" font-weight="700">⬇ Download APK — Free</text>
+
+  <text x="30" y="340" fill="#71717a" font-family="system-ui,sans-serif" font-size="12">The button is always red and</text>
+  <text x="30" y="358" fill="#71717a" font-family="system-ui,sans-serif" font-size="12">easy to spot on the page.</text>
+
+  <!-- Phone mockup -->
+  <rect x="310" y="28" width="240" height="394" rx="28" fill="#1c1c1e" stroke="#3a3a3c" stroke-width="2"/>
+  <rect x="395" y="28" width="70" height="16" rx="8" fill="#0f0f0f"/>
+  <rect x="319" y="68" width="222" height="308" fill="#141414"/>
+  <rect x="395" y="394" width="70" height="5" rx="3" fill="#3a3a3c"/>
+  <rect x="308" y="130" width="4" height="50" rx="2" fill="#3a3a3c"/>
+  <rect x="308" y="192" width="4" height="50" rx="2" fill="#3a3a3c"/>
+  <rect x="546" y="155" width="4" height="60" rx="2" fill="#3a3a3c"/>
+
+  <!-- Phone status bar -->
+  <rect x="319" y="68" width="222" height="24" fill="#1c1c1e"/>
+  <text x="329" y="83" fill="#a1a1aa" font-size="9">9:41</text>
+  <text x="505" y="83" fill="#a1a1aa" font-size="9">📶 🔋</text>
+
+  <!-- Website header in phone -->
+  <rect x="319" y="92" width="222" height="30" fill="#1c1c1e"/>
+  <text x="329" y="112" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="10" font-weight="700">🏍️ Stunt Bike Extreme</text>
+  <line x1="319" y1="122" x2="541" y2="122" stroke="#dc2626" stroke-width="1.5"/>
+
+  <!-- Page content above fold -->
+  <rect x="319" y="122" width="222" height="80" fill="#141414"/>
+  <text x="430" y="145" text-anchor="middle" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="12" font-weight="800">Stunt Bike Extreme APK</text>
+  <text x="430" y="162" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="9">Latest Version • Free • Android</text>
+  <rect x="335" y="170" width="190" height="6" rx="3" fill="#2c2c2e"/>
+  <rect x="335" y="182" width="160" height="6" rx="3" fill="#2c2c2e"/>
+
+  <!-- The big red download button on phone — with glow -->
+  <ellipse cx="430" cy="235" rx="120" ry="30" fill="url(#btnGlow)"/>
+  <ellipse cx="430" cy="235" rx="100" ry="22" fill="url(#btnGlow)"/>
+  <rect x="340" y="210" width="180" height="44" rx="10" fill="#dc2626" filter="url(#softGlow)"/>
+  <text x="430" y="237" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="12" font-weight="700">⬇ Download APK — Free</text>
+
+  <!-- Pulsing ring around button -->
+  <rect x="333" y="203" width="194" height="58" rx="14" fill="none" stroke="#dc2626" stroke-width="2" opacity="0.6"/>
+  <rect x="326" y="196" width="208" height="72" rx="18" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Outline button below -->
+  <rect x="340" y="265" width="180" height="30" rx="7" fill="none" stroke="#2c2c2e" stroke-width="1"/>
+  <text x="430" y="285" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="10">How to Install</text>
+
+  <!-- Content below -->
+  <rect x="335" y="305" width="180" height="6" rx="3" fill="#2c2c2e"/>
+  <rect x="335" y="317" width="145" height="6" rx="3" fill="#2c2c2e"/>
+  <rect x="335" y="329" width="160" height="6" rx="3" fill="#2c2c2e"/>
+  <rect x="335" y="341" width="130" height="6" rx="3" fill="#2c2c2e"/>
+  <rect x="335" y="358" width="180" height="6" rx="3" fill="#2c2c2e"/>
+
+  <!-- Arrow from left -->
+  <path d="M238 283 Q285 283 330 232" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>
+  <circle cx="330" cy="232" r="4" fill="#dc2626"/>
+
+  <!-- Right side tips -->
+  <text x="590" y="200" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">Scroll down if</text>
+  <text x="590" y="218" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">you don't see it</text>
+  <text x="590" y="248" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">The button is</text>
+  <text x="590" y="266" fill="#dc2626" font-family="system-ui,sans-serif" font-size="11" font-weight="600">always red</text>
+</svg>

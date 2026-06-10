@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}404 — Page Not Found{% endblock %}
+
+{% block content %}
+<section class="section" style="min-height:70vh; display:flex; align-items:center;">
+  <div class="container text-center">
+    <div style="font-size:5rem; margin-bottom:1rem;">🏍️</div>
+    <h1 style="font-size:6rem; color:var(--primary); margin:0; line-height:1;">404</h1>
+    <h2 class="page-title">Oops! Page Not Found</h2>
+    <p class="lead-text">
+      Looks like you've taken a wrong turn. The page you're looking for doesn't exist or has been moved.
+    </p>
+    <div style="margin-top:2rem;">
+      <a href="{% url 'home' %}" class="btn btn-download btn-lg">🏠 Back to Home</a>
+      <a href="{% url 'blog' %}" class="btn btn-outline btn-lg" style="margin-left:1rem;">Browse Blog</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

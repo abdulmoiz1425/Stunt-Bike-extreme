@@ -1,0 +1,931 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block structured_data %}
+{% if latest_version %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Stunt Bike Extreme",
+  "operatingSystem": "Android",
+  "applicationCategory": "GameApplication",
+  "author": {"@type": "Organization", "name": "Hyperkani"},
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ latest_version.rating }}",
+    "ratingCount": "50000"
+  }
+}
+</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">🏍️ Android Game</div>
+        <h1 class="hero-title">
+          {% if platform %}{{ platform.name }}{% else %}Stunt Bike Extreme APK{% endif %}
+        </h1>
+        <p class="hero-tagline">
+          {% if platform %}{{ platform.tagline }}{% else %}The Ultimate Motorcycle Stunt Racing Game{% endif %}
+        </p>
+        {% if latest_version %}
+          <div class="hero-meta">
+            <span class="meta-tag">v{{ latest_version.version }}</span>
+            <span class="meta-tag">{{ latest_version.file_size }}</span>
+            <span class="meta-tag">{{ latest_version.android_requirement }}</span>
+            <span class="meta-tag rating">⭐ {{ latest_version.rating }}</span>
+            <span class="meta-tag">50M+ Downloads</span>
+          </div>
+          <div class="hero-actions">
+            <a href="{% url 'download_apk' latest_version.id %}" class="btn btn-download btn-lg">
+              ⬇ Download APK — Free
+            </a>
+            <a href="#how-to-install" class="btn btn-outline btn-lg">How to Install</a>
+          </div>
+        {% else %}
+          <div class="hero-actions">
+            <a href="{% url 'contact' %}" class="btn btn-download btn-lg">Coming Soon</a>
+          </div>
+        {% endif %}
+      </div>
+      <div class="hero-visual">
+        <div class="hero-icon-wrap">
+          <div class="hero-icon">🏍️</div>
+          <div class="hero-glow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== APK DETAILS TABLE ===== -->
+{% if latest_version %}
+<section class="section section-dark">
+  <div class="container">
+    <div class="apk-details-wrap">
+      <div class="apk-details-header">
+        <span class="section-eyebrow">APK Information</span>
+        <h2 class="section-title">Stunt Bike Extreme APK Details</h2>
+        <p class="section-subtitle">Everything you need to know before downloading</p>
+      </div>
+      <div class="apk-details-body">
+        <table class="data-table">
+          <tbody>
+            <tr><td>APK Name</td><td><strong>Stunt Bike Extreme APK</strong></td></tr>
+            <tr><td>Version</td><td>{{ latest_version.version }} <span class="badge-latest">Latest</span></td></tr>
+            <tr><td>File Size</td><td>{{ latest_version.file_size }}</td></tr>
+            <tr><td>Rating</td><td>⭐ {{ latest_version.rating }}+ out of 5</td></tr>
+            <tr><td>Android Required</td><td>{{ latest_version.android_requirement }}</td></tr>
+            <tr><td>License Type</td><td><span class="compare-badge-safe">Free</span></td></tr>
+            <tr><td>Developer</td><td>Hyperkani</td></tr>
+            <tr><td>Category</td><td>Bike Stunt / Racing Game</td></tr>
+            <tr><td>Total Downloads</td><td>50,000,000+</td></tr>
+            <tr><td>Last Updated</td><td>{{ latest_version.release_date|date:"F d, Y" }}</td></tr>
+          </tbody>
+        </table>
+        <div class="apk-details-cta">
+          <a href="{% url 'download_apk' latest_version.id %}" class="btn btn-download btn-lg">
+            ⬇ Download APK v{{ latest_version.version }}
+          </a>
+          <p class="dl-note">Safe &amp; virus-free &bull; No registration required</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ===== WHAT IS STUNT BIKE EXTREME ===== -->
+<section class="section">
+  <div class="container">
+    <div class="two-col-intro">
+      <div class="intro-text">
+        <span class="section-eyebrow">About the Game</span>
+        <h2 class="section-title">What Is Stunt Bike Extreme?</h2>
+        <p class="lead-text">
+          Stunt Bike Extreme is a bike stunt game made for players who enjoy racing, jumps, and
+          skill-based tracks. You ride a dirt bike, cross obstacles, and try to finish each level
+          without crashing. The game mixes motorcycle physics with stunt racing — you need speed,
+          balance, and patience.
+        </p>
+        <p class="body-text" style="margin-top:1rem;">
+          A small mistake on a ramp or landing can slow your time or stop your run entirely.
+          The game is built around short levels, quick restarts, and bike upgrades. It works well
+          for players who want fast gameplay on mobile, desktop, or browser. Developed by
+          <strong>Hyperkani</strong>, it has been downloaded over <strong>50 million times</strong> worldwide.
+        </p>
+      </div>
+      <div class="intro-table-wrap">
+        <h3 class="intro-table-title">Game Overview</h3>
+        <table class="data-table">
+          <tbody>
+            <tr><td>Game Type</td><td>Dirt bike stunt &amp; motocross racing</td></tr>
+            <tr><td>Developer</td><td>Hyperkani</td></tr>
+            <tr><td>Main Goal</td><td>Complete each level without crashing</td></tr>
+            <tr><td>Gameplay Style</td><td>Side-scrolling stunt physics racing</td></tr>
+            <tr><td>Main Devices</td><td>Android, iOS, PC, Browser</td></tr>
+            <tr><td>Player Focus</td><td>Skill-based control &amp; level completion</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== GAME FEATURES ===== -->
+{% if platform %}
+<section class="section section-dark">
+  <div class="container">
+    <span class="section-eyebrow text-center d-block">What You Get</span>
+    <h2 class="section-title text-center">Game Features</h2>
+    <p class="section-subtitle text-center">Everything that makes Stunt Bike Extreme worth playing</p>
+    <div class="features-rich-grid">
+
+      <div class="feature-rich-card">
+        <div class="frc-icon">🏍️</div>
+        <div class="frc-body">
+          <h3 class="frc-title">3D Bike Stunt Gameplay</h3>
+          <p class="frc-desc">Real-feeling jumps, flips, and landings. Physics respond to your input so every move matters — one bad angle on a ramp and the run ends.</p>
+        </div>
+      </div>
+
+      <div class="feature-rich-card">
+        <div class="frc-icon">🏆</div>
+        <div class="frc-body">
+          <h3 class="frc-title">Multiple Levels and Racing Tracks</h3>
+          <p class="frc-desc">Dozens of tracks with different types and challenge levels. Each track adds a new obstacle set that forces you to change your approach.</p>
+        </div>
+      </div>
+
+      <div class="feature-rich-card">
+        <div class="frc-icon">💎</div>
+        <div class="frc-body">
+          <h3 class="frc-title">Dirt Bikes, Upgrades, and Rewards</h3>
+          <p class="frc-desc">Earn coins and upgrade your bikes. Unlocking new bikes changes how you ride — speed, stability, and handling all improve with the right upgrades.</p>
+        </div>
+      </div>
+
+      <div class="feature-rich-card">
+        <div class="frc-icon">🔥</div>
+        <div class="frc-body">
+          <h3 class="frc-title">Obstacles, Jumps, Flips, and Stunts</h3>
+          <p class="frc-desc">Ramps, hills, gaps, and barriers test your control. Land stunts cleanly to score more points and unlock bonus stars on each level.</p>
+        </div>
+      </div>
+
+      <div class="feature-rich-card">
+        <div class="frc-icon">📱</div>
+        <div class="frc-body">
+          <h3 class="frc-title">Smooth Controls for Mobile and Desktop</h3>
+          <p class="frc-desc">Touch and tilt controls on mobile. Keyboard or controller on PC. The controls adapt to your device so the game feels natural on any platform.</p>
+        </div>
+      </div>
+
+      <div class="feature-rich-card">
+        <div class="frc-icon">🌍</div>
+        <div class="frc-body">
+          <h3 class="frc-title">Different Environments and Roads</h3>
+          <p class="frc-desc">Desert, mountain, city, and track environments. Each setting changes the ride feel and introduces different types of obstacles and terrain.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ===== HOW TO DOWNLOAD ===== -->
+<section class="section" id="dl-guide-section">
+  <div class="container">
+    <span class="section-eyebrow">Step-by-Step</span>
+    <h2 class="section-title">How to Download Stunt Bike Extreme</h2>
+    <p class="section-subtitle">Follow these steps to get the APK safely on your device</p>
+
+    <div class="dl-preview-layout">
+
+      <!-- ── STEP CARDS ── -->
+      <div class="dl-steps-col">
+        <div class="install-steps">
+
+          <div class="install-step" data-step="1"
+               onmouseenter="dlShowStep(1)" onclick="dlShowStep(1)">
+            <div class="step-number">1</div>
+            <div class="step-text">Open your device or browser and go to the download page on this website.</div>
+          </div>
+
+          <div class="install-step" data-step="2"
+               onmouseenter="dlShowStep(2)" onclick="dlShowStep(2)">
+            <div class="step-number">2</div>
+            <div class="step-text">Find the <strong>main red download button</strong> on this page — look for the button labeled "Download APK".</div>
+          </div>
+
+          <div class="install-step" data-step="3"
+               onmouseenter="dlShowStep(3)" onclick="dlShowStep(3)">
+            <div class="step-number">3</div>
+            <div class="step-text"><strong>Tap or click the button</strong> once to go to the confirmation page. Then tap "Download Now" to begin.</div>
+          </div>
+
+          <div class="install-step" data-step="4"
+               onmouseenter="dlShowStep(4)" onclick="dlShowStep(4)">
+            <div class="step-number">4</div>
+            <div class="step-text">Wait for the APK file to save to your device. The time depends on your internet speed.</div>
+          </div>
+
+          <div class="install-step" data-step="5"
+               onmouseenter="dlShowStep(5)" onclick="dlShowStep(5)">
+            <div class="step-number">5</div>
+            <div class="step-text">Open your <strong>Downloads folder</strong> or pull down the notification bar to find the file.</div>
+          </div>
+
+          <div class="install-step" data-step="6"
+               onmouseenter="dlShowStep(6)" onclick="dlShowStep(6)">
+            <div class="step-number">6</div>
+            <div class="step-text">Tap the file to open it. You may see a security prompt — this is normal for APK installs.</div>
+          </div>
+
+          <div class="install-step" data-step="7"
+               onmouseenter="dlShowStep(7)" onclick="dlShowStep(7)">
+            <div class="step-number">7</div>
+            <div class="step-text">Follow the install prompts to finish setup. Only use the main button on this page — <strong>avoid fake popups or redirect buttons</strong> on other sites.</div>
+          </div>
+
+        </div>
+
+        {% if latest_version %}
+        <div style="margin-top:1.75rem;">
+          <a href="{% url 'download_apk' latest_version.id %}" class="btn btn-download btn-lg"
+             style="width:100%; justify-content:center;">⬇ Start Download — Free</a>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- ── IMAGE PREVIEW PANEL ── -->
+      <div class="dl-preview-col">
+
+        <!-- Placeholder: shown before any step is hovered -->
+        <div class="dl-prev-placeholder" id="dlPrevPlaceholder">
+          <div class="dl-prev-ph-icon">🖼️</div>
+          <p class="dl-prev-ph-title">Step Visual Guide</p>
+          <p class="dl-prev-ph-sub">Hover over any step on the left to see an image guide for that step.</p>
+          <div class="dl-step-dots">
+            <span class="dl-dot"></span>
+            <span class="dl-dot"></span>
+            <span class="dl-dot"></span>
+            <span class="dl-dot"></span>
+            <span class="dl-dot"></span>
+            <span class="dl-dot"></span>
+            <span class="dl-dot"></span>
+          </div>
+        </div>
+
+        <!-- Active image panel: hidden until first hover -->
+        <div class="dl-prev-panel" id="dlPrevPanel">
+          <div class="dl-prev-header">
+            <span class="dl-prev-badge" id="dlPrevBadge">Step 1</span>
+          </div>
+          <div class="dl-prev-img-wrap">
+            <img class="dl-prev-img" id="dlPrevImg" src="" alt="Step guide image" />
+            <div class="dl-prev-no-img" id="dlPrevNoImg">
+              <span class="dl-prev-no-img-ico">🖼️</span>
+              <span class="dl-prev-no-img-txt">Image coming soon</span>
+            </div>
+          </div>
+          <div class="dl-prev-info">
+            <div class="dl-prev-title" id="dlPrevTitle"></div>
+            <p class="dl-prev-desc" id="dlPrevDesc"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SCREENSHOTS ===== -->
+{% if screenshots %}
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="section-title text-center">Screenshots</h2>
+    <p class="section-subtitle text-center">See the game in action</p>
+    <div class="screenshots-grid">
+      {% for shot in screenshots %}
+        <div class="screenshot-item" onclick="openLightbox('{{ shot.image.url }}', '{{ shot.caption }}')">
+          <img src="{{ shot.image.url }}" alt="{{ shot.caption|default:'Stunt Bike Extreme screenshot' }}" loading="lazy">
+          <div class="screenshot-overlay"><span>🔍 View</span></div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ===== HOW TO INSTALL ===== -->
+{% if platform %}
+<section class="section {% if not screenshots %}section-dark{% endif %}" id="how-to-install">
+  <div class="container">
+    <div class="content-narrow">
+      <span class="section-eyebrow">Installation Guide</span>
+      <h2 class="section-title">How to Install on Android</h2>
+      <p class="section-subtitle">Step-by-step guide to install the APK after downloading</p>
+      <div class="install-steps">
+        {% for step in platform.get_installation_steps %}
+          <div class="install-step">
+            <div class="step-number">{{ forloop.counter }}</div>
+            <div class="step-text">{{ step }}</div>
+          </div>
+        {% endfor %}
+      </div>
+      {% if latest_version %}
+        <div class="text-center" style="margin-top:2rem;">
+          <a href="{% url 'download_apk' latest_version.id %}" class="btn btn-download btn-lg">⬇ Download Now — Free</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ===== HOW TO PLAY ===== -->
+<section class="section section-dark">
+  <div class="container">
+    <span class="section-eyebrow">Player Guide</span>
+    <h2 class="section-title text-center">How to Play Stunt Bike Extreme</h2>
+    <p class="section-subtitle text-center">Master the controls and ride your way to the top</p>
+    <div class="play-guide-grid">
+
+      <div class="play-guide-card">
+        <div class="play-guide-icon">🕹️</div>
+        <h3 class="play-guide-title">Basic Controls and Bike Balance</h3>
+        <ul class="play-guide-list">
+          <li>Use the gas button to speed up; brake to slow down</li>
+          <li>On mobile, tilt your device or use on-screen lean buttons</li>
+          <li>On PC, use arrow keys or WASD to steer and lean</li>
+          <li>Keeping balance during a jump matters as much as speed</li>
+        </ul>
+      </div>
+
+      <div class="play-guide-card">
+        <div class="play-guide-icon">🏁</div>
+        <h3 class="play-guide-title">How to Complete Levels</h3>
+        <ul class="play-guide-list">
+          <li>Each level has a start point, obstacles, and a finish line</li>
+          <li>Cross the finish without crashing to pass the level</li>
+          <li>Some levels add time limits or minimum star targets</li>
+          <li>Patience matters more than raw speed on tight tracks</li>
+        </ul>
+      </div>
+
+      <div class="play-guide-card">
+        <div class="play-guide-icon">⭐</div>
+        <h3 class="play-guide-title">How to Earn Stars and Rewards</h3>
+        <ul class="play-guide-list">
+          <li>Stars come from completing levels cleanly</li>
+          <li>Three stars require a crash-free run with a fast time</li>
+          <li>Coins come from level completion and bonus pickups</li>
+          <li>Use coins to upgrade or unlock new bikes</li>
+        </ul>
+      </div>
+
+      <div class="play-guide-card">
+        <div class="play-guide-icon">🔧</div>
+        <h3 class="play-guide-title">How to Upgrade Your Bike</h3>
+        <ul class="play-guide-list">
+          <li>Go to the garage and pick any bike you own</li>
+          <li>Use coins or earned rewards to upgrade stats</li>
+          <li>Upgrades improve speed, control, and stability</li>
+          <li>Test each upgrade on a familiar track to feel the change</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== GAMEPLAY TIPS ===== -->
+<section class="section">
+  <div class="container">
+    <span class="section-eyebrow">Pro Advice</span>
+    <h2 class="section-title text-center">Gameplay Tips</h2>
+    <p class="section-subtitle text-center">Improve your score and ride further with these tips</p>
+    <div class="tips-grid">
+
+      <div class="tip-card">
+        <div class="tip-card-icon">🌱</div>
+        <h3 class="tip-card-title">Beginner Tips</h3>
+        <div class="tip-list">
+          <div class="tip-item">Start slow, especially on ramp sections</div>
+          <div class="tip-item">Focus on landing straight before chasing speed</div>
+          <div class="tip-item">Replay early levels to build control confidence</div>
+          <div class="tip-item">Finish the level first — chase 3 stars on the second run</div>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-card-icon">🏍️</div>
+        <h3 class="tip-card-title">Best Bike and Upgrade Tips</h3>
+        <div class="tip-list">
+          <div class="tip-item">Upgrade stability before upgrading speed</div>
+          <div class="tip-item">Use heavier bikes for obstacle tracks, lighter for jumps</div>
+          <div class="tip-item">Avoid spending all coins on a single upgrade at once</div>
+          <div class="tip-item">Test each upgrade on a track you already know well</div>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-card-icon">📈</div>
+        <h3 class="tip-card-title">Tips to Improve Your Score</h3>
+        <div class="tip-list">
+          <div class="tip-item">Keep the bike straight just before landing from a jump</div>
+          <div class="tip-item">Avoid extra flips when the landing zone is short</div>
+          <div class="tip-item">Replay levels after each upgrade to see the difference</div>
+          <div class="tip-item">Clean driving — no crashes — gives the biggest score boost</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== OFFICIAL vs MOD APK COMPARISON ===== -->
+<section class="section section-dark">
+  <div class="container">
+    <span class="section-eyebrow">Know the Difference</span>
+    <h2 class="section-title text-center">Official Version vs MOD APK</h2>
+    <p class="section-subtitle text-center">Understanding the difference helps you make a safer choice</p>
+    <div class="table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>✅ Official Version</th>
+            <th>⚠️ MOD APK</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Source</td>
+            <td>Google Play Store</td>
+            <td>Third-party websites</td>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td>Free (ads may appear)</td>
+            <td>Free</td>
+          </tr>
+          <tr>
+            <td>Ads</td>
+            <td>Yes</td>
+            <td>Often removed</td>
+          </tr>
+          <tr>
+            <td>Updates</td>
+            <td>Automatic via Play Store</td>
+            <td>Manual download only</td>
+          </tr>
+          <tr>
+            <td>Coins / Rewards</td>
+            <td>Earned through play</td>
+            <td>Often unlimited</td>
+          </tr>
+          <tr>
+            <td>File Safety</td>
+            <td><span class="compare-badge-safe">Verified by Google</span></td>
+            <td><span class="compare-badge-warn">Unverified</span></td>
+          </tr>
+          <tr>
+            <td>Risk Level</td>
+            <td><span class="compare-badge-safe">Low</span></td>
+            <td><span class="compare-badge-warn">Varies by source</span></td>
+          </tr>
+          <tr>
+            <td>Recommended</td>
+            <td><span class="compare-badge-safe">Yes</span></td>
+            <td><span class="compare-badge-warn">Use with caution</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center" style="margin-top:1.5rem;">
+      <a href="{% url 'mod_apk' %}" class="btn btn-outline">Explore MOD APK →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== PROS & CONS ===== -->
+<section class="section">
+  <div class="container content-narrow">
+    <span class="section-eyebrow">Honest Review</span>
+    <h2 class="section-title text-center">Pros and Cons</h2>
+    <p class="section-subtitle text-center">A balanced look at what the game does well and where it falls short</p>
+    <div class="pros-cons-grid">
+
+      <div class="pros-card">
+        <h3 class="pros-cons-title"><span>✅</span> Pros</h3>
+        <ul class="pros-cons-list">
+          <li class="pros-cons-item"><span class="pros-icon">✓</span><span>Easy to learn, hard to master — great for all skill levels</span></li>
+          <li class="pros-cons-item"><span class="pros-icon">✓</span><span>No login or account required to start playing</span></li>
+          <li class="pros-cons-item"><span class="pros-icon">✓</span><span>Works on Android, iOS, PC, and browser</span></li>
+          <li class="pros-cons-item"><span class="pros-icon">✓</span><span>Free to download and play on all platforms</span></li>
+          <li class="pros-cons-item"><span class="pros-icon">✓</span><span>Regular updates add new levels and bikes</span></li>
+        </ul>
+      </div>
+
+      <div class="cons-card">
+        <h3 class="pros-cons-title"><span>❌</span> Cons</h3>
+        <ul class="pros-cons-list">
+          <li class="pros-cons-item"><span class="cons-icon">✗</span><span>Ads appear in the free version between levels</span></li>
+          <li class="pros-cons-item"><span class="cons-icon">✗</span><span>Some bikes are locked behind progress milestones</span></li>
+          <li class="pros-cons-item"><span class="cons-icon">✗</span><span>Full features require an internet connection</span></li>
+          <li class="pros-cons-item"><span class="cons-icon">✗</span><span>MOD versions carry file safety risks</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== PLATFORM CARDS ===== -->
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="section-title text-center">Available On All Platforms</h2>
+    <p class="section-subtitle text-center">Stunt Bike Extreme works on more than just Android</p>
+    <div class="platform-cards">
+      {% for p in platforms %}
+        <a href="{% url p.get_url_name %}" class="platform-card">
+          <div class="platform-card-icon">{{ p.get_icon }}</div>
+          <div class="platform-card-name">{{ p.name }}</div>
+          <div class="platform-card-tag">{{ p.tagline }}</div>
+          <div class="platform-card-cta">View Guide →</div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SIMILAR GAMES ===== -->
+<section class="section">
+  <div class="container">
+    <span class="section-eyebrow">You Might Also Like</span>
+    <h2 class="section-title text-center">Similar Bike Stunt Games</h2>
+    <p class="section-subtitle text-center">Enjoyed Stunt Bike Extreme? These games offer a similar challenge</p>
+    <div class="similar-games-grid">
+
+      <div class="similar-game-card">
+        <div class="similar-game-icon">🏙️</div>
+        <h3 class="similar-game-name">Extreme Bike Stunts</h3>
+        <p class="similar-game-desc">A similar side-scroll stunt game with more focus on city tracks and urban obstacles. A solid choice after you finish all Stunt Bike Extreme levels.</p>
+      </div>
+
+      <div class="similar-game-card">
+        <div class="similar-game-icon">🏔️</div>
+        <h3 class="similar-game-name">Dirt Bike Extreme Stunts</h3>
+        <p class="similar-game-desc">Focuses on dirt and off-road terrain. Better for players who prefer open terrain jumps and wide tracks over narrow precision sections.</p>
+      </div>
+
+      <div class="similar-game-card">
+        <div class="similar-game-icon">🎮</div>
+        <h3 class="similar-game-name">3D Bike Stunt Games</h3>
+        <p class="similar-game-desc">Uses a full 3D third-person camera instead of side-scroll. A different visual experience but with the same stunt-based level structure.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== VERSION HISTORY ===== -->
+{% if all_versions %}
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="section-title text-center">Version History</h2>
+    <p class="section-subtitle text-center">All available APK versions</p>
+    <div class="table-wrap">
+      <table class="versions-table">
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>Size</th>
+            <th>Android</th>
+            <th>Released</th>
+            <th>Downloads</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for v in all_versions %}
+            <tr {% if v.is_latest %}class="latest-row"{% endif %}>
+              <td>
+                v{{ v.version }}
+                {% if v.is_latest %}<span class="badge-latest">Latest</span>{% endif %}
+              </td>
+              <td>{{ v.file_size }}</td>
+              <td>{{ v.android_requirement }}</td>
+              <td>{{ v.release_date|date:"M d, Y" }}</td>
+              <td>{{ v.download_count }}</td>
+              <td><a href="{% url 'download_apk' v.id %}" class="btn btn-sm btn-download">⬇ Download</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center" style="margin-top:1rem;">
+      <a href="{% url 'old_versions' %}" class="btn btn-outline">View All Versions</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ===== WHY PLAYERS LOVE IT ===== -->
+<section class="section">
+  <div class="container">
+    <span class="section-eyebrow">Player Feedback</span>
+    <h2 class="section-title text-center">Why Players Love This Bike Game</h2>
+    <p class="section-subtitle text-center">With 50 million downloads, here is what keeps players coming back</p>
+    <div class="why-grid">
+
+      <div class="why-item">
+        <div class="why-icon">⏱️</div>
+        <div class="why-text">
+          <strong>Short sessions, big replay value</strong>
+          Each level takes 1–3 minutes. Easy to pick up, hard to put down when you are one crash away from three stars.
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <div class="why-text">
+          <strong>No complex story required</strong>
+          Just ride, jump, and improve. The game does not require reading or following a plot — you play and improve.
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">📊</div>
+        <div class="why-text">
+          <strong>Skill-based progress you can see</strong>
+          Your improvement is visible in faster times and cleaner runs. Progress feels earned, not random.
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">🚲</div>
+        <div class="why-text">
+          <strong>Many bikes and tracks</strong>
+          A large roster of upgradeable bikes and varied track designs keeps the game fresh long after the first session.
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">📱</div>
+        <div class="why-text">
+          <strong>Works on almost every device</strong>
+          Mobile, desktop, and browser support means you can play wherever you are without switching platforms.
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">🆓</div>
+        <div class="why-text">
+          <strong>Free to play, no paywall barrier</strong>
+          The core game is fully free. You can reach the final levels, unlock bikes, and earn rewards without spending money.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+{% if faqs %}
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="section-title text-center">Frequently Asked Questions</h2>
+    <p class="section-subtitle text-center">Common questions about Stunt Bike Extreme, answered.</p>
+    <div class="faq-list">
+      {% for faq in faqs %}
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            {{ faq.question }}
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ===== RECENT BLOG POSTS ===== -->
+{% if recent_posts %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title text-center">Latest from the Blog</h2>
+    <p class="section-subtitle text-center">Tips, tricks, and updates for Stunt Bike Extreme</p>
+    <div class="blog-grid">
+      {% for post in recent_posts %}
+        <a href="{% url 'article_detail' post.slug %}" class="blog-card">
+          {% if post.featured_image %}
+            <div class="blog-card-img">
+              <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" loading="lazy">
+            </div>
+          {% else %}
+            <div class="blog-card-img blog-card-placeholder">🏍️</div>
+          {% endif %}
+          <div class="blog-card-body">
+            <h3 class="blog-card-title">{{ post.title }}</h3>
+            <p class="blog-card-excerpt">{{ post.excerpt|truncatechars:100 }}</p>
+            <div class="blog-card-meta">
+              <span>{{ post.publish_date|date:"M d, Y" }}</span>
+              <span>{{ post.reading_time }} min read</span>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <div class="text-center" style="margin-top:2rem;">
+      <a href="{% url 'blog' %}" class="btn btn-outline">View All Posts</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <p id="lightboxCaption"></p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function openLightbox(src, caption) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCaption').textContent = caption;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+</script>
+
+<script>
+/* ── Download Step Image Preview ── */
+(function () {
+  var STEPS = [
+    {
+      image: "{% static 'images/step-1.svg' %}",
+      title: "Step 1: Open the Download Page",
+      desc:  "Navigate to the download page on this website using your mobile or desktop browser."
+    },
+    {
+      image: "{% static 'images/step-2.svg' %}",
+      title: "Step 2: Find the Red Download Button",
+      desc:  "Scroll the page until you see the large red Download APK button."
+    },
+    {
+      image: "{% static 'images/step-3.svg' %}",
+      title: "Step 3: Tap to Start the Download",
+      desc:  "Tap or click the button once to reach the confirmation page, then tap Download Now."
+    },
+    {
+      image: "{% static 'images/step-4.svg' %}",
+      title: "Step 4: Wait for the File to Save",
+      desc:  "A progress bar appears in your browser. Wait until the download completes fully."
+    },
+    {
+      image: "{% static 'images/step-5.svg' %}",
+      title: "Step 5: Locate the Downloaded File",
+      desc:  "Open your Downloads folder or pull down the notification bar to find the APK file."
+    },
+    {
+      image: "{% static 'images/step-6.svg' %}",
+      title: "Step 6: Open the APK File",
+      desc:  "Tap the file to start installation. When prompted, tap Allow to enable the install."
+    },
+    {
+      image: "{% static 'images/step-7.svg' %}",
+      title: "Step 7: Complete the Installation",
+      desc:  "Follow the on-screen prompts. Avoid fake popups or redirect buttons on other sites."
+    }
+  ];
+
+  var activeStep  = 0;
+  var swapTimer   = null;
+
+  var placeholder = document.getElementById('dlPrevPlaceholder');
+  var panel       = document.getElementById('dlPrevPanel');
+  var imgEl       = document.getElementById('dlPrevImg');
+  var noImg       = document.getElementById('dlPrevNoImg');
+  var badgeEl     = document.getElementById('dlPrevBadge');
+  var titleEl     = document.getElementById('dlPrevTitle');
+  var descEl      = document.getElementById('dlPrevDesc');
+  var dots        = document.querySelectorAll('.dl-step-dots .dl-dot');
+
+  function activateCard(n) {
+    document.querySelectorAll('.install-step').forEach(function (el) {
+      el.classList.remove('dl-active');
+    });
+    var card = document.querySelector('.install-step[data-step="' + n + '"]');
+    if (card) card.classList.add('dl-active');
+
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle('dl-dot-active', i === n - 1);
+    });
+
+    badgeEl.textContent = 'Step ' + n;
+    titleEl.textContent = STEPS[n - 1].title;
+    descEl.textContent  = STEPS[n - 1].desc;
+  }
+
+  function swapImage(newSrc, animate) {
+    noImg.style.display = 'none';
+    if (!animate) {
+      /* First ever reveal — straight zoom-in from nothing */
+      imgEl.classList.remove('dl-img-out', 'dl-img-in');
+      void imgEl.offsetWidth;           /* force reflow so animation restarts */
+      imgEl.src = newSrc;
+      imgEl.classList.add('dl-img-in');
+    } else {
+      /* Subsequent — fade out, swap, fade in */
+      imgEl.classList.remove('dl-img-in');
+      imgEl.classList.add('dl-img-out');
+
+      if (swapTimer) clearTimeout(swapTimer);
+      swapTimer = setTimeout(function () {
+        imgEl.classList.remove('dl-img-out');
+        imgEl.src = newSrc;
+        void imgEl.offsetWidth;
+        imgEl.classList.add('dl-img-in');
+        swapTimer = null;
+      }, 200);
+    }
+  }
+
+  function dlShowStep(n) {
+    var step = STEPS[n - 1];
+    if (!step) return;
+
+    activateCard(n);
+
+    if (activeStep === 0) {
+      /* First interaction: swap placeholder for panel */
+      placeholder.style.display = 'none';
+      panel.style.display = 'block';
+      swapImage(step.image, false);
+    } else if (activeStep !== n) {
+      swapImage(step.image, true);
+    }
+
+    activeStep = n;
+  }
+
+  /* Graceful fallback when an image file is missing */
+  if (imgEl) {
+    imgEl.addEventListener('error', function () {
+      imgEl.style.opacity = '0';
+      noImg.style.display = 'flex';
+    });
+    imgEl.addEventListener('load', function () {
+      imgEl.style.opacity = '';
+      noImg.style.display = 'none';
+    });
+  }
+
+  /* Expose globally for the inline handlers */
+  window.dlShowStep = dlShowStep;
+})();
+</script>
+{% endblock %}

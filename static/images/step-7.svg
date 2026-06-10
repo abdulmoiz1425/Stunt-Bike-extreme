@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="successGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="glow7"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect width="800" height="450" fill="#0f0f0f"/>
+
+  <!-- Step badge -->
+  <rect x="30" y="30" width="64" height="24" rx="12" fill="#22c55e"/>
+  <text x="62" y="47" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="11" font-weight="700">STEP 7</text>
+
+  <!-- Left text -->
+  <text x="30" y="100" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="26" font-weight="800">Installation</text>
+  <text x="30" y="133" fill="#22c55e" font-family="system-ui,sans-serif" font-size="26" font-weight="800">Complete!</text>
+  <text x="30" y="175" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="14">Follow the install prompts and</text>
+  <text x="30" y="196" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="14">tap Done or Open when finished.</text>
+
+  <!-- Success checklist -->
+  <text x="30" y="250" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">INSTALLATION CHECKLIST</text>
+  <text x="30" y="270" fill="#22c55e" font-family="system-ui,sans-serif" font-size="12">✓  Downloaded safely</text>
+  <text x="30" y="290" fill="#22c55e" font-family="system-ui,sans-serif" font-size="12">✓  Security prompt accepted</text>
+  <text x="30" y="310" fill="#22c55e" font-family="system-ui,sans-serif" font-size="12">✓  App installed</text>
+  <text x="30" y="330" fill="#22c55e" font-family="system-ui,sans-serif" font-size="12">✓  Ready to play!</text>
+
+  <text x="30" y="380" fill="#dc2626" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Avoid fake popups on other sites.</text>
+  <text x="30" y="398" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">Only use the main button on this page.</text>
+
+  <!-- Phone mockup -->
+  <rect x="310" y="28" width="240" height="394" rx="28" fill="#1c1c1e" stroke="#3a3a3c" stroke-width="2"/>
+  <rect x="395" y="28" width="70" height="16" rx="8" fill="#0f0f0f"/>
+  <rect x="319" y="68" width="222" height="308" fill="#141414"/>
+  <rect x="395" y="394" width="70" height="5" rx="3" fill="#3a3a3c"/>
+  <rect x="308" y="130" width="4" height="50" rx="2" fill="#3a3a3c"/>
+  <rect x="308" y="192" width="4" height="50" rx="2" fill="#3a3a3c"/>
+  <rect x="546" y="155" width="4" height="60" rx="2" fill="#3a3a3c"/>
+
+  <!-- Status bar -->
+  <rect x="319" y="68" width="222" height="20" fill="#1c1c1e"/>
+  <text x="329" y="82" fill="#a1a1aa" font-size="9">9:41</text>
+  <text x="505" y="82" fill="#a1a1aa" font-size="9">📶 🔋</text>
+
+  <!-- Installation complete screen -->
+  <rect x="319" y="88" width="222" height="288" fill="#0a0a0a"/>
+  <rect x="319" y="88" width="222" height="288" fill="url(#successGrad)"/>
+
+  <!-- Installer header -->
+  <rect x="319" y="88" width="222" height="30" fill="#1c1c1e"/>
+  <text x="430" y="107" text-anchor="middle" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="10" font-weight="600">App Installer</text>
+
+  <!-- Success icon with glow -->
+  <circle cx="430" cy="185" r="38" fill="rgba(34,197,94,0.1)" filter="url(#glow7)"/>
+  <circle cx="430" cy="185" r="28" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="2"/>
+  <text x="430" y="194" text-anchor="middle" font-size="22">✓</text>
+
+  <!-- Success text -->
+  <text x="430" y="234" text-anchor="middle" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="13" font-weight="700">App Installed!</text>
+  <text x="430" y="252" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="9">Stunt Bike Extreme</text>
+  <text x="430" y="265" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="9">Successfully installed on your device</text>
+
+  <!-- App icon -->
+  <rect x="410" y="272" width="40" height="40" rx="10" fill="#dc2626"/>
+  <text x="430" y="298" text-anchor="middle" fill="white" font-size="18">🏍️</text>
+
+  <!-- Done / Open buttons -->
+  <rect x="330" y="326" width="86" height="32" rx="8" fill="none" stroke="#3a3a3c" stroke-width="1.5"/>
+  <text x="373" y="347" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="11">Done</text>
+
+  <rect x="424" y="326" width="86" height="32" rx="8" fill="#dc2626"/>
+  <text x="467" y="347" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Open</text>
+
+  <!-- Right celebration -->
+  <text x="590" y="180" fill="#22c55e" font-family="system-ui,sans-serif" font-size="22">🎉</text>
+  <text x="590" y="220" fill="#22c55e" font-family="system-ui,sans-serif" font-size="13" font-weight="700">You're all set!</text>
+  <text x="590" y="250" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">Tap Open to</text>
+  <text x="590" y="268" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">start playing</text>
+  <text x="590" y="305" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">Or find the app</text>
+  <text x="590" y="323" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">on your home</text>
+  <text x="590" y="341" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">screen</text>
+</svg>

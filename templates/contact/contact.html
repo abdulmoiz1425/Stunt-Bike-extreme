@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="contact-hero-inner">
+      <div>
+        <nav class="breadcrumb">
+          <a href="{% url 'home' %}">Home</a> &rsaquo; <span>Contact Us</span>
+        </nav>
+        <h1 class="page-title">Contact Us</h1>
+        <p class="page-subtitle">
+          We are here to help with questions, feedback, content updates, and
+          website-related requests.
+        </p>
+      </div>
+      <div class="contact-hero-stats">
+        <div class="contact-stat">
+          <div class="contact-stat-icon">📬</div>
+          <div class="contact-stat-label">We read every message</div>
+        </div>
+        <div class="contact-stat">
+          <div class="contact-stat-icon">⚡</div>
+          <div class="contact-stat-label">Reply when needed</div>
+        </div>
+        <div class="contact-stat">
+          <div class="contact-stat-icon">🛡️</div>
+          <div class="contact-stat-label">Fan guide only</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FORM + SIDEBAR ===== -->
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- CONTACT FORM -->
+      <div class="contact-form-wrap">
+        <div class="contact-form-header">
+          <h2 class="section-title">Send Us a Message</h2>
+          <p class="body-text">
+            Have a question about our website? Want to report an issue or send feedback?
+            Fill in the form and we will read your message carefully.
+          </p>
+        </div>
+
+        <form method="post" class="contact-form">
+          {% csrf_token %}
+          {{ form.honeypot }}
+
+          {% if form.non_field_errors %}
+            <div class="alert alert-error">{{ form.non_field_errors }}</div>
+          {% endif %}
+
+          <div class="form-group">
+            <label for="id_name">Full Name <span class="required">*</span></label>
+            {{ form.name }}
+            {% if form.name.errors %}<div class="field-error">{{ form.name.errors }}</div>{% endif %}
+          </div>
+          <div class="form-group">
+            <label for="id_email">Email Address <span class="required">*</span></label>
+            {{ form.email }}
+            {% if form.email.errors %}<div class="field-error">{{ form.email.errors }}</div>{% endif %}
+          </div>
+          <div class="form-group">
+            <label for="id_subject">Subject <span class="required">*</span></label>
+            {{ form.subject }}
+            {% if form.subject.errors %}<div class="field-error">{{ form.subject.errors }}</div>{% endif %}
+          </div>
+          <div class="form-group">
+            <label for="id_message">Message <span class="required">*</span></label>
+            {{ form.message }}
+            {% if form.message.errors %}<div class="field-error">{{ form.message.errors }}</div>{% endif %}
+          </div>
+          <p class="form-note">
+            Please include clear details so we can understand your request faster.
+          </p>
+          <button type="submit" class="btn btn-download btn-lg" style="width:100%; justify-content:center;">
+            Send Message →
+          </button>
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="contact-info">
+
+        <div class="contact-card">
+          <div class="contact-card-icon">📧</div>
+          <h4>Email Us Directly</h4>
+          <p>
+            <a href="mailto:{{ site_settings.contact_email }}">{{ site_settings.contact_email }}</a>
+          </p>
+          <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">
+            You can also reach us through this form — both methods go to the same inbox.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">⏱️</div>
+          <h4>Response Time</h4>
+          <p>We aim to respond as soon as possible.</p>
+          <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">
+            Some messages may take longer if they need content review, link checking, or
+            ownership verification. Please send your message only once.
+          </p>
+        </div>
+
+        <div class="contact-card contact-card-warn">
+          <div class="contact-card-icon">⚠️</div>
+          <h4>Before You Send</h4>
+          <p>
+            We are <strong>not</strong> the official game developer. We cannot fix game bugs,
+            restore lost progress, send redeem codes, add unlimited money, or unlock bikes
+            inside the app.
+          </p>
+          <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">
+            For official app issues or store-related concerns, contact the platform where you
+            downloaded the game.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== WHAT YOU CAN CONTACT US ABOUT ===== -->
+<section class="section section-dark">
+  <div class="container">
+    <span class="section-eyebrow text-center d-block">Help Topics</span>
+    <h2 class="section-title text-center">What You Can Contact Us About</h2>
+    <p class="section-subtitle text-center">
+      We can help with the following types of requests. Select the topic closest to your question.
+    </p>
+    <div class="topics-grid">
+
+      <div class="topic-card">
+        <div class="topic-icon">💬</div>
+        <h3 class="topic-title">Website Feedback</h3>
+        <p class="topic-desc">Tell us what works well or what could be improved on any page.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon">🔗</div>
+        <h3 class="topic-title">Broken Links or Pages</h3>
+        <p class="topic-desc">Found a page that doesn't load or a link that goes nowhere? Let us know.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon">📋</div>
+        <h3 class="topic-title">Outdated Game Info</h3>
+        <p class="topic-desc">If game details, version numbers, or guides are no longer accurate, report it here.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon">🛡️</div>
+        <h3 class="topic-title">APK Safety Concerns</h3>
+        <p class="topic-desc">If you believe a link, claim, or page on our site is unsafe or misleading.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon">✏️</div>
+        <h3 class="topic-title">Content Corrections</h3>
+        <p class="topic-desc">Spotted incorrect information in a guide? We welcome correction requests.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon">©️</div>
+        <h3 class="topic-title">Copyright Concerns</h3>
+        <p class="topic-desc">If you own rights to content shown on our site, contact us for review.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon">🤝</div>
+        <h3 class="topic-title">Advertising or Partnerships</h3>
+        <p class="topic-desc">Questions about advertising placement or collaboration opportunities.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon">💡</div>
+        <h3 class="topic-title">Guide Suggestions</h3>
+        <p class="topic-desc">Have an idea for a guide or topic we haven't covered yet? Share it with us.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== APK REPORTING + COPYRIGHT ===== -->
+<section class="section">
+  <div class="container">
+    <div class="contact-details-grid">
+
+      <!-- Report APK Issues -->
+      <div class="contact-detail-card">
+        <div class="contact-detail-icon">⚠️</div>
+        <h3 class="contact-detail-title">Report APK or Mod APK Issues</h3>
+        <p class="contact-detail-text">
+          Our website may discuss APK files, mod APK searches, unlimited money claims, and
+          unlock-all-bikes topics for information and safety awareness only.
+        </p>
+        <p class="contact-detail-text" style="margin-top:0.75rem;">
+          If you see a link, claim, or page that feels unsafe or misleading, please contact us.
+          We will review the content and update it when needed.
+        </p>
+        <a href="#" onclick="document.querySelector('.contact-form').scrollIntoView({behavior:'smooth'}); return false;"
+           class="btn btn-outline" style="margin-top:1.25rem;">
+          Report an Issue →
+        </a>
+      </div>
+
+      <!-- Copyright -->
+      <div class="contact-detail-card">
+        <div class="contact-detail-icon">©️</div>
+        <h3 class="contact-detail-title">Copyright and Ownership Requests</h3>
+        <p class="contact-detail-text">
+          If you own rights to any image, logo, game name, text, or media shown on our
+          website, contact us for review. We respect valid ownership requests and will
+          review them carefully.
+        </p>
+        <p class="contact-detail-text" style="margin-top:0.75rem; font-weight:600; color:var(--text-primary);">
+          Please include in your message:
+        </p>
+        <ul class="copyright-list">
+          <li><span class="copyright-bullet">→</span> Your full name</li>
+          <li><span class="copyright-bullet">→</span> Your company or rights owner name</li>
+          <li><span class="copyright-bullet">→</span> The page URL with the content</li>
+          <li><span class="copyright-bullet">→</span> The content you want reviewed</li>
+          <li><span class="copyright-bullet">→</span> Proof of ownership or authorization</li>
+          <li><span class="copyright-bullet">→</span> Your requested action</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== IMPORTANT NOTE ===== -->
+<section class="section section-dark">
+  <div class="container content-narrow">
+    <div class="notices-grid">
+
+      <div class="notice-card notice-info">
+        <div class="notice-header">
+          <span class="notice-icon">ℹ️</span>
+          <h3 class="notice-title">Important Note</h3>
+        </div>
+        <p class="notice-text">
+          This website is an <strong>independent fan guide</strong> and information site. We are
+          not connected with Hyperkani, Google Play, Apple App Store, or any official game platform.
+        </p>
+        <p class="notice-text" style="margin-top:0.75rem;">
+          For game support, billing, app errors, or account issues, please use the official
+          support options from the platform where you installed or played the game.
+        </p>
+      </div>
+
+      <div class="notice-card notice-success">
+        <div class="notice-header">
+          <span class="notice-icon">🙏</span>
+          <h3 class="notice-title">Thank You</h3>
+        </div>
+        <p class="notice-text">
+          Your feedback helps us keep this website more useful for players. Thank you for
+          helping us improve our Stunt Bike Extreme guides and safety information.
+        </p>
+        <p class="notice-text" style="margin-top:0.75rem;">
+          We try to read every message carefully and reply when a response is needed. One
+          clear message is enough — please avoid sending the same request multiple times.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

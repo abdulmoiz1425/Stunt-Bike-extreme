@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ article.title|escapejs }}",
+  "datePublished": "{{ article.publish_date|date:'c' }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ article.author.get_full_name|default:article.author.username|escapejs }}"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<article class="article-page">
+  <!-- Article Header -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a> &rsaquo;
+        <a href="{% url 'blog' %}">Blog</a> &rsaquo;
+        <span>{{ article.title|truncatechars:50 }}</span>
+      </nav>
+      <h1 class="page-title">{{ article.title }}</h1>
+      <div class="article-meta">
+        <span>✍️ {{ article.author.get_full_name|default:article.author.username }}</span>
+        <span>📅 {{ article.publish_date|date:"F d, Y" }}</span>
+        <span>⏱ {{ article.reading_time }} min read</span>
+        <span>💬 {{ comments.count }} comment{{ comments.count|pluralize }}</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding-top:2rem; padding-bottom:3rem;">
+    <div class="article-layout">
+      <!-- Article Content -->
+      <div class="article-content">
+        {% if article.featured_image %}
+          <img src="{{ article.featured_image.url }}" alt="{{ article.title }}" class="article-featured-img">
+        {% endif %}
+        <div class="article-body">
+          {{ article.content|safe }}
+        </div>
+
+        <!-- Share Buttons -->
+        <div class="share-bar">
+          <span class="share-label">Share:</span>
+          <button onclick="copyLink()" class="share-btn">🔗 Copy Link</button>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comments-section">
+          <h3 class="comments-heading">
+            Comments ({{ comments.count }})
+          </h3>
+
+          {% if comments %}
+            <div class="comments-list">
+              {% for comment in comments %}
+                <div class="comment">
+                  <div class="comment-header">
+                    <strong class="comment-author">{{ comment.name }}</strong>
+                    <span class="comment-date">{{ comment.created_at|date:"M d, Y" }}</span>
+                  </div>
+                  <p class="comment-body">{{ comment.body }}</p>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="no-comments">No comments yet. Be the first to share your thoughts!</p>
+          {% endif %}
+
+          <!-- Comment Form -->
+          <div class="comment-form-wrap">
+            <h4>Leave a Comment</h4>
+            <form method="post" action="{% url 'add_comment' article.slug %}">
+              {% csrf_token %}
+              <div class="form-group">
+                {{ form.name }}
+              </div>
+              <div class="form-group">
+                {{ form.email }}
+              </div>
+              <div class="form-group">
+                {{ form.body }}
+              </div>
+              <p class="form-note">Your comment will appear after moderation.</p>
+              <button type="submit" class="btn btn-download">Submit Comment</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="article-sidebar">
+        <div class="sidebar-card">
+          <h4 class="sidebar-heading">⬇ Download APK</h4>
+          <p>Get Stunt Bike Extreme for free on your device.</p>
+          <a href="{% url 'home' %}#download" class="btn btn-download" style="width:100%; text-align:center;">Download Now</a>
+        </div>
+        <div class="sidebar-card">
+          <h4 class="sidebar-heading">📱 Platforms</h4>
+          <ul class="sidebar-links">
+            <li><a href="{% url 'home' %}">Android APK</a></li>
+            <li><a href="{% url 'mod_apk' %}">MOD APK</a></li>
+            <li><a href="{% url 'for_pc' %}">For PC</a></li>
+            <li><a href="{% url 'for_ios' %}">For iOS</a></li>
+            <li><a href="{% url 'for_smart_tv' %}">Smart TV</a></li>
+            <li><a href="{% url 'for_tv_box' %}">TV Box</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = document.querySelector('.share-btn');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy Link', 2000);
+  });
+}
+</script>
+{% endblock %}

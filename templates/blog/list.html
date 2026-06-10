@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Blog</h1>
+    <p class="page-subtitle">Tips, tricks, updates, and news about Stunt Bike Extreme</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {% if page_obj.object_list %}
+      <div class="blog-grid">
+        {% for post in page_obj %}
+          <a href="{% url 'article_detail' post.slug %}" class="blog-card">
+            {% if post.featured_image %}
+              <div class="blog-card-img">
+                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" loading="lazy">
+              </div>
+            {% else %}
+              <div class="blog-card-img blog-card-placeholder">🏍️</div>
+            {% endif %}
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">{{ post.title }}</h2>
+              <p class="blog-card-excerpt">{{ post.excerpt|truncatechars:120 }}</p>
+              <div class="blog-card-meta">
+                <span>✍️ {{ post.author.get_full_name|default:post.author.username }}</span>
+                <span>📅 {{ post.publish_date|date:"M d, Y" }}</span>
+                <span>⏱ {{ post.reading_time }} min read</span>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+      <!-- PAGINATION -->
+      {% if page_obj.has_other_pages %}
+        <div class="pagination">
+          {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-btn">← Previous</a>
+          {% endif %}
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <span class="page-btn active">{{ num }}</span>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <a href="?page={{ num }}" class="page-btn">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="page-btn">Next →</a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    {% else %}
+      <div class="empty-state">
+        <div class="empty-icon">📝</div>
+        <h3>No Articles Yet</h3>
+        <p>We're working on some great content. Check back soon!</p>
+        <a href="{% url 'home' %}" class="btn btn-download">Back to Home</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

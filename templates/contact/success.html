@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section" style="min-height:60vh; display:flex; align-items:center;">
+  <div class="container text-center">
+    <div style="font-size:4rem; margin-bottom:1rem;">✅</div>
+    <h1 class="page-title">Message Sent Successfully!</h1>
+    <p class="lead-text">
+      Thank you for reaching out. We've received your message and will get back to you within 24–48 hours.
+    </p>
+    <div style="margin-top:2rem;">
+      <a href="{% url 'home' %}" class="btn btn-download btn-lg">🏍️ Back to Home</a>
+      <a href="{% url 'blog' %}" class="btn btn-outline btn-lg" style="margin-left:1rem;">Read Blog</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

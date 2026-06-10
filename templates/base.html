@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ page_title|default:"Stunt Bike Extreme APK Download" }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ meta_description|default:"Download Stunt Bike Extreme APK latest version. Free motorcycle stunt racing game for Android, PC, iOS, Smart TV and TV Box." }}{% endblock %}">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="{% block og_title %}{{ page_title }}{% endblock %}">
+  <meta property="og:description" content="{{ meta_description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site_settings.site_name }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ meta_description }}">
+  {% load static %}
+  <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
+  <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/favicon.svg' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block structured_data %}{% endblock %}
+</head>
+<body>
+
+<!-- COOKIE NOTICE -->
+<div class="cookie-bar" id="cookieBar">
+  <p>{{ site_settings.cookie_notice }}</p>
+  <button class="btn btn-sm" onclick="acceptCookies()">Accept</button>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{% url 'home' %}" class="site-logo">
+      {% if site_settings.logo %}
+        <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}" height="40">
+      {% else %}
+        <span class="logo-text">🏍️ {{ site_settings.site_name }}</span>
+      {% endif %}
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <ul class="nav-list">
+        <li><a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+        {% for platform in nav_platforms %}
+          {% if platform.platform_type != 'android' %}
+            <li>
+              <a href="{% url platform.get_url_name %}" class="nav-link">
+                {{ platform.get_icon }} {{ platform.platform_type|upper|slice:":3" }}{% if platform.platform_type == 'mod' %} APK{% elif platform.platform_type == 'smart_tv' %} TV{% elif platform.platform_type == 'tv_box' %} Box{% elif platform.platform_type == 'ios' %}{% elif platform.platform_type == 'pc' %}{% endif %}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+        <li><a href="{% url 'old_versions' %}" class="nav-link {% if request.resolver_match.url_name == 'old_versions' %}active{% endif %}">Old Versions</a></li>
+        <li><a href="{% url 'blog' %}" class="nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a></li>
+      </ul>
+      <form class="nav-search" action="{% url 'search' %}" method="get">
+        <input type="search" name="q" placeholder="Search..." class="search-input" value="{{ request.GET.q }}">
+        <button type="submit" class="search-btn" aria-label="Search">🔍</button>
+      </form>
+    </nav>
+  </div>
+</header>
+
+<!-- MESSAGES -->
+{% if messages %}
+<div class="messages-container">
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- MAIN CONTENT -->
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 class="footer-heading">🏍️ {{ site_settings.site_name }}</h3>
+        <p class="footer-desc">{{ site_settings.tagline }}</p>
+        <div class="social-links">
+          {% if site_settings.facebook_url %}
+            <a href="{{ site_settings.facebook_url }}" class="social-link" target="_blank" rel="noopener">FB</a>
+          {% endif %}
+          {% if site_settings.twitter_url %}
+            <a href="{{ site_settings.twitter_url }}" class="social-link" target="_blank" rel="noopener">TW</a>
+          {% endif %}
+          {% if site_settings.youtube_url %}
+            <a href="{{ site_settings.youtube_url }}" class="social-link" target="_blank" rel="noopener">YT</a>
+          {% endif %}
+          {% if site_settings.instagram_url %}
+            <a href="{{ site_settings.instagram_url }}" class="social-link" target="_blank" rel="noopener">IG</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Platforms</h4>
+        <ul class="footer-links">
+          <li><a href="{% url 'home' %}">Android APK</a></li>
+          <li><a href="{% url 'mod_apk' %}">MOD APK</a></li>
+          <li><a href="{% url 'for_pc' %}">For PC</a></li>
+          <li><a href="{% url 'for_ios' %}">For iOS</a></li>
+          <li><a href="{% url 'for_smart_tv' %}">Smart TV</a></li>
+          <li><a href="{% url 'for_tv_box' %}">TV Box</a></li>
+          <li><a href="{% url 'old_versions' %}">Old Versions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Information</h4>
+        <ul class="footer-links">
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Disclaimer</h4>
+        <p class="footer-desc">{{ site_settings.footer_text }}</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {% now "Y" %} {{ site_settings.site_name }}. All rights reserved.</p>
+      <p class="footer-legal">
+        <a href="{% url 'privacy' %}">Privacy Policy</a> &bull;
+        <a href="{% url 'terms' %}">Terms &amp; Conditions</a> &bull;
+        <a href="{% url 'disclaimer' %}">Disclaimer</a> &bull;
+        <a href="{% url 'cookie_policy' %}">Cookie Policy</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

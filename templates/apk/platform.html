@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-icon">{{ platform.get_icon }}</div>
+      <div>
+        <nav class="breadcrumb">
+          <a href="{% url 'home' %}">Home</a> &rsaquo;
+          <span>{{ platform.name }}</span>
+        </nav>
+        <h1 class="page-title">{{ platform.name }}</h1>
+        <p class="page-subtitle">{{ platform.tagline }}</p>
+        {% if latest_version %}
+          <div class="hero-meta" style="margin-top:1rem;">
+            <span class="meta-tag">v{{ latest_version.version }}</span>
+            <span class="meta-tag">{{ latest_version.file_size }}</span>
+            <span class="meta-tag">{{ latest_version.android_requirement }}</span>
+            <span class="meta-tag rating">⭐ {{ latest_version.rating }}</span>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <a href="{% url 'download_apk' latest_version.id %}" class="btn btn-download btn-lg">⬇ Download Now</a>
+            <a href="#how-to-install" class="btn btn-outline btn-lg" style="margin-left:.75rem;">Installation Guide</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APK INFO TABLE -->
+{% if latest_version %}
+<section class="section section-dark">
+  <div class="container">
+    <div class="apk-info-card">
+      <h2 class="section-title">APK Details</h2>
+      <div class="apk-info-grid">
+        <div class="apk-info-item">
+          <span class="info-label">Version</span>
+          <span class="info-value">{{ latest_version.version }}</span>
+        </div>
+        <div class="apk-info-item">
+          <span class="info-label">File Size</span>
+          <span class="info-value">{{ latest_version.file_size }}</span>
+        </div>
+        <div class="apk-info-item">
+          <span class="info-label">Requirement</span>
+          <span class="info-value">{{ latest_version.android_requirement }}</span>
+        </div>
+        <div class="apk-info-item">
+          <span class="info-label">Rating</span>
+          <span class="info-value">⭐ {{ latest_version.rating }}/5</span>
+        </div>
+        <div class="apk-info-item">
+          <span class="info-label">Downloads</span>
+          <span class="info-value">{{ latest_version.download_count }}</span>
+        </div>
+        <div class="apk-info-item">
+          <span class="info-label">Updated</span>
+          <span class="info-value">{{ latest_version.release_date|date:"M d, Y" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- DESCRIPTION -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">About {{ platform.name }}</h2>
+    <div class="content-prose">
+      <p class="lead-text">{{ platform.description }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+{% if platform.get_features_list %}
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="section-title text-center">Key Features</h2>
+    <div class="features-grid">
+      {% for feature in platform.get_features_list %}
+        <div class="feature-card">
+          <div class="feature-icon">{% cycle '✅' '⚡' '🎮' '💡' '🔥' '🌟' '🏆' '🛡️' %}</div>
+          <span class="feature-text">{{ feature }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- SCREENSHOTS -->
+{% if screenshots %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title text-center">Screenshots</h2>
+    <div class="screenshots-grid">
+      {% for shot in screenshots %}
+        <div class="screenshot-item" onclick="openLightbox('{{ shot.image.url }}', '{{ shot.caption }}')">
+          <img src="{{ shot.image.url }}" alt="{{ shot.caption|default:platform.name }}" loading="lazy">
+          <div class="screenshot-overlay"><span>🔍</span></div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- INSTALLATION GUIDE -->
+<section class="section section-dark" id="how-to-install">
+  <div class="container">
+    <h2 class="section-title text-center">Installation Guide</h2>
+    <p class="section-subtitle text-center">Follow these steps carefully to install {{ platform.name }}</p>
+    <div class="install-steps">
+      {% for step in platform.get_installation_steps %}
+        <div class="install-step">
+          <div class="step-number">{{ forloop.counter }}</div>
+          <div class="step-text">{{ step }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if latest_version %}
+      <div class="text-center" style="margin-top:2rem;">
+        <a href="{% url 'download_apk' latest_version.id %}" class="btn btn-download btn-lg">⬇ Download {{ platform.name }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- VERSION TABLE -->
+{% if all_versions %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title text-center">Available Versions</h2>
+    <div class="table-wrap">
+      <table class="versions-table">
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>Size</th>
+            <th>Requirement</th>
+            <th>Released</th>
+            <th>Downloads</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for v in all_versions %}
+            <tr {% if v.is_latest %}class="latest-row"{% endif %}>
+              <td>
+                v{{ v.version }}
+                {% if v.is_latest %}<span class="badge-latest">Latest</span>{% endif %}
+              </td>
+              <td>{{ v.file_size }}</td>
+              <td>{{ v.android_requirement }}</td>
+              <td>{{ v.release_date|date:"M d, Y" }}</td>
+              <td>{{ v.download_count }}</td>
+              <td>
+                <a href="{% url 'download_apk' v.id %}" class="btn btn-sm btn-download">⬇</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- FAQ -->
+{% if faqs %}
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="section-title text-center">FAQ</h2>
+    <div class="faq-list">
+      {% for faq in faqs %}
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            {{ faq.question }}<span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>{{ faq.answer }}</p></div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <p id="lightboxCaption"></p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function openLightbox(src, caption) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCaption').textContent = caption;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+</script>
+{% endblock %}

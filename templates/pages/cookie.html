@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="{% url 'home' %}">Home</a> &rsaquo; <span>Cookie Policy</span>
+    </nav>
+    <h1 class="page-title">Cookie Policy</h1>
+    <p class="page-subtitle">
+      This page explains what cookies are, how we use them on this website, and how you
+      can control your cookie preferences.
+    </p>
+    <div class="legal-hero-meta">
+      <span class="legal-updated-tag">📅 Last Updated: June 2026</span>
+      <span class="legal-page-tag">🍪 Cookie Information</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== QUICK SUMMARY ===== -->
+<section class="section section-dark">
+  <div class="container">
+    <span class="section-eyebrow text-center d-block">At a Glance</span>
+    <h2 class="section-title text-center">Key Points of This Cookie Policy</h2>
+    <div class="legal-summary-grid">
+      <div class="legal-summary-card">
+        <div class="legal-sum-icon">🍪</div>
+        <div class="legal-sum-title">What We Use</div>
+        <p class="legal-sum-text">Cookies for analytics, advertising, and essential site functionality.</p>
+      </div>
+      <div class="legal-summary-card">
+        <div class="legal-sum-icon">🔒</div>
+        <div class="legal-sum-title">No Personal Data Sold</div>
+        <p class="legal-sum-text">We do not sell or trade your personal information to any third party.</p>
+      </div>
+      <div class="legal-summary-card">
+        <div class="legal-sum-icon">⚙️</div>
+        <div class="legal-sum-title">Your Control</div>
+        <p class="legal-sum-text">You can manage or disable cookies at any time through your browser settings.</p>
+      </div>
+      <div class="legal-summary-card">
+        <div class="legal-sum-icon">📋</div>
+        <div class="legal-sum-title">Full Transparency</div>
+        <p class="legal-sum-text">We clearly explain every type of cookie we use and why we use it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== MAIN CONTENT ===== -->
+<section class="section">
+  <div class="container">
+    <div class="legal-body">
+
+      <!-- 01 INTRODUCTION -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">01</span>
+          <h2 class="legal-section-title">Introduction</h2>
+        </div>
+        <p>
+          This Cookie Policy explains what cookies are, how this website uses them, and what
+          choices you have regarding cookies. By continuing to use this website, you agree to
+          our use of cookies as described in this policy.
+        </p>
+        <p>
+          This policy should be read alongside our <a href="{% url 'privacy' %}">Privacy Policy</a>
+          and <a href="{% url 'terms' %}">Terms &amp; Conditions</a> for a complete understanding of
+          how we handle data and protect your privacy.
+        </p>
+      </div>
+
+      <!-- 02 WHAT ARE COOKIES -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">02</span>
+          <h2 class="legal-section-title">What Are Cookies?</h2>
+        </div>
+        <p>
+          Cookies are small text files that are placed on your device — computer, tablet, or
+          smartphone — when you visit a website. They are widely used to make websites work more
+          efficiently, remember your preferences, and provide useful information to website owners.
+        </p>
+        <p>
+          Cookies do not contain personal information like your name or email address on their own.
+          They typically store an anonymous identifier or preference setting that helps the website
+          function better for you during and between visits.
+        </p>
+        <div class="legal-callout legal-callout-info">
+          <span class="legal-callout-ico">ℹ️</span>
+          <div class="legal-callout-body">
+            <strong>Session vs. Persistent Cookies</strong>
+            <span>Session cookies are temporary — they are deleted when you close your browser.
+            Persistent cookies remain on your device until they expire or you delete them
+            manually. Both types are commonly used across most modern websites.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 HOW WE USE COOKIES -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">03</span>
+          <h2 class="legal-section-title">How We Use Cookies</h2>
+        </div>
+        <p>
+          We use cookies to improve your experience on our website, understand how visitors interact
+          with our content, and deliver relevant advertising. Specifically, we use cookies to:
+        </p>
+        <ul class="legal-list">
+          <li>Remember your cookie consent preferences between visits</li>
+          <li>Keep our website functioning correctly through session management</li>
+          <li>Collect anonymous analytics data about page visits and user behavior</li>
+          <li>Display relevant advertisements through third-party ad networks</li>
+          <li>Understand which content is most useful to our visitors</li>
+          <li>Improve website navigation and the overall user experience over time</li>
+        </ul>
+        <p>
+          We do not use cookies to collect sensitive personal data, financial information, or
+          information that could directly identify you as an individual.
+        </p>
+      </div>
+
+      <!-- 04 TYPES OF COOKIES -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">04</span>
+          <h2 class="legal-section-title">Types of Cookies We Use</h2>
+        </div>
+        <p>We use four main types of cookies on this website:</p>
+        <div class="cookie-type-grid">
+          <div class="cookie-type-card">
+            <div class="cookie-type-icon">🔧</div>
+            <div class="cookie-type-name">Essential Cookies</div>
+            <p class="cookie-type-desc">
+              Required for basic website functions such as navigation, form submission, and
+              security. These cannot be disabled as the website would not work correctly without
+              them. They do not store personally identifiable information.
+            </p>
+          </div>
+          <div class="cookie-type-card">
+            <div class="cookie-type-icon">📊</div>
+            <div class="cookie-type-name">Analytics Cookies</div>
+            <p class="cookie-type-desc">
+              Used by services like Google Analytics to collect anonymous data about how visitors
+              use the website — which pages are visited, how long users stay, and where traffic
+              comes from. All data is aggregated and anonymized.
+            </p>
+          </div>
+          <div class="cookie-type-card">
+            <div class="cookie-type-icon">📢</div>
+            <div class="cookie-type-name">Advertising Cookies</div>
+            <p class="cookie-type-desc">
+              Used by Google AdSense and similar networks to display relevant advertisements.
+              These cookies track browsing behavior to show ads that may be more relevant to
+              your interests based on previous visits.
+            </p>
+          </div>
+          <div class="cookie-type-card">
+            <div class="cookie-type-icon">🌐</div>
+            <div class="cookie-type-name">Third-Party Cookies</div>
+            <p class="cookie-type-desc">
+              Set by embedded content or services from other websites. We cannot fully control
+              these cookies — their use is governed by the respective third party's own privacy
+              and cookie policy.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 COOKIES & GAME DOWNLOADS -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">05</span>
+          <h2 class="legal-section-title">Cookies and Game Downloads</h2>
+        </div>
+        <p>
+          This website provides information about Stunt Bike Extreme APK downloads for
+          informational purposes. We do not use cookies to track your APK downloads, installation
+          activity, or game usage.
+        </p>
+        <div class="legal-callout legal-callout-success">
+          <span class="legal-callout-ico">✅</span>
+          <div class="legal-callout-body">
+            <strong>Download Privacy</strong>
+            <span>Our cookies do not monitor what you download from third-party sources. Any
+            tracking that occurs on external download or app store pages is governed by their
+            own cookie and privacy policies, not ours.</span>
+          </div>
+        </div>
+        <p>
+          When you leave our site by clicking a download link, you are subject to the privacy
+          and cookie practices of the destination site. We recommend reviewing those policies
+          before proceeding.
+        </p>
+      </div>
+
+      <!-- 06 MANAGING COOKIES -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">06</span>
+          <h2 class="legal-section-title">Managing Cookies</h2>
+        </div>
+        <p>
+          You have full control over cookies through your browser settings. You can choose to
+          accept all cookies, reject non-essential cookies, or delete existing cookies stored
+          on your device at any time.
+        </p>
+        <p>
+          Most browsers also allow you to set preferences for specific websites, so you can
+          block cookies from third-party sites while allowing cookies from websites you trust.
+        </p>
+        <div class="legal-callout legal-callout-warn">
+          <span class="legal-callout-ico">⚠️</span>
+          <div class="legal-callout-body">
+            <strong>Impact of Disabling Cookies</strong>
+            <span>Disabling analytics or advertising cookies will not stop you from using the
+            website, but you may see less relevant ads. Disabling essential cookies may prevent
+            certain features — such as contact forms — from working correctly.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 07 BROWSER CONTROLS -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">07</span>
+          <h2 class="legal-section-title">Browser Cookie Controls</h2>
+        </div>
+        <p>
+          You can manage or delete cookies directly through your browser settings. Below are
+          step-by-step paths for the most common browsers:
+        </p>
+        <div class="browser-steps-grid">
+          <div class="browser-step">
+            <div class="browser-step-name">🌐 Google Chrome</div>
+            <div class="browser-step-path">Settings → Privacy and Security → Cookies and other site data</div>
+          </div>
+          <div class="browser-step">
+            <div class="browser-step-name">🦊 Mozilla Firefox</div>
+            <div class="browser-step-path">Settings → Privacy &amp; Security → Cookies and Site Data → Manage Data</div>
+          </div>
+          <div class="browser-step">
+            <div class="browser-step-name">🧭 Apple Safari</div>
+            <div class="browser-step-path">Preferences → Privacy → Manage Website Data</div>
+          </div>
+          <div class="browser-step">
+            <div class="browser-step-name">🔵 Microsoft Edge</div>
+            <div class="browser-step-path">Settings → Cookies and Site Permissions → Manage and Delete Cookies and Site Data</div>
+          </div>
+        </div>
+        <p style="margin-top:1rem;">
+          For mobile browsers, cookie settings are typically found under your browser's privacy
+          or site settings in the app menu.
+        </p>
+      </div>
+
+      <!-- 08 CHANGES -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">08</span>
+          <h2 class="legal-section-title">Changes to This Cookie Policy</h2>
+        </div>
+        <p>
+          We may update this Cookie Policy from time to time to reflect changes in our practices,
+          technology, or legal requirements. When we make updates, we will revise the
+          "Last Updated" date shown at the top of this page.
+        </p>
+        <p>
+          We encourage you to check this page periodically to stay informed about how we use
+          cookies. Your continued use of our website after any changes are posted constitutes
+          your acceptance of the updated policy.
+        </p>
+      </div>
+
+      <!-- 09 CONTACT US -->
+      <div class="legal-section">
+        <div class="legal-section-header">
+          <span class="legal-section-num">09</span>
+          <h2 class="legal-section-title">Contact Us</h2>
+        </div>
+        <p>
+          If you have any questions about this Cookie Policy, want to understand more about how
+          we use cookies, or have concerns about your privacy, please contact us through our
+          Contact page.
+        </p>
+        <div class="legal-callout legal-callout-info">
+          <span class="legal-callout-ico">📬</span>
+          <div class="legal-callout-body">
+            <strong>Privacy Questions Welcome</strong>
+            <span>Your privacy matters to us. If you have specific questions about cookies,
+            tracking, or data practices on this website, we are always happy to help and
+            will respond as soon as possible.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="legal-cta">
+        <div class="legal-cta-title">Have Cookie or Privacy Questions?</div>
+        <p class="legal-cta-text">
+          Read our Privacy Policy for full details on how we handle your data, or contact us
+          with any specific questions about cookies on this site.
+        </p>
+        <div class="legal-cta-actions">
+          <a href="{% url 'privacy' %}" class="btn btn-download">🔒 Privacy Policy</a>
+          <a href="{% url 'contact' %}" class="btn btn-outline">📬 Contact Us</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

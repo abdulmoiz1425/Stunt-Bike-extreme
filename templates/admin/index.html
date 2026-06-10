@@ -1,0 +1,77 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<style>
+.sbe-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:30px; }
+.sbe-stat-card { background:#fff; border:1px solid #ddd; border-radius:8px; padding:20px; text-align:center; }
+.sbe-stat-card .number { font-size:2rem; font-weight:700; color:#c0392b; }
+.sbe-stat-card .label { color:#666; font-size:0.9rem; margin-top:4px; }
+</style>
+
+{% if app_list %}
+  <div class="sbe-stats" id="sbe-dashboard-stats">
+    <div class="sbe-stat-card">
+      <div class="number" id="stat-downloads">—</div>
+      <div class="label">Total Downloads</div>
+    </div>
+    <div class="sbe-stat-card">
+      <div class="number" id="stat-platforms">—</div>
+      <div class="label">Active Platforms</div>
+    </div>
+    <div class="sbe-stat-card">
+      <div class="number" id="stat-articles">—</div>
+      <div class="label">Published Articles</div>
+    </div>
+    <div class="sbe-stat-card">
+      <div class="number" id="stat-messages">—</div>
+      <div class="label">Unread Messages</div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load stats via Django admin context — these are filled from the template tag below
+    document.getElementById('stat-downloads').textContent = '{{ total_downloads|default:"0" }}';
+    document.getElementById('stat-platforms').textContent = '{{ active_platforms|default:"0" }}';
+    document.getElementById('stat-articles').textContent = '{{ published_articles|default:"0" }}';
+    document.getElementById('stat-messages').textContent = '{{ unread_messages|default:"0" }}';
+  });
+  </script>
+
+  {% for app in app_list %}
+    <div class="app-{{ app.app_label }} module">
+      <table>
+        <caption>
+          <a href="{{ app.app_url }}" class="section" title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">{{ app.name }}</a>
+        </caption>
+        {% for model in app.models %}
+          <tr class="model-{{ model.object_name|lower }}">
+            {% if model.admin_url %}
+              <th scope="row"><a href="{{ model.admin_url }}">{{ model.name }}</a></th>
+            {% else %}
+              <th scope="row">{{ model.name }}</th>
+            {% endif %}
+            <td>
+              {% if model.add_url %}
+                <a href="{{ model.add_url }}" class="addlink">{% translate 'Add' %}</a>
+              {% endif %}
+            </td>
+            <td>
+              {% if model.admin_url %}
+                <a href="{{ model.admin_url }}" class="changelink">{% translate 'Change' %}</a>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>{% translate "You don't have permission to view or edit anything." %}</p>
+{% endif %}
+{% endblock %}
+
+{% block sidebar %}
+{{ block.super }}
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Search Results</h1>
+    {% if query %}
+      <p class="page-subtitle">Results for: <em>"{{ query }}"</em></p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Search Bar -->
+    <form action="{% url 'search' %}" method="get" class="search-form-page">
+      <input type="search" name="q" value="{{ query }}" placeholder="Search articles and pages..." class="form-input search-input-lg">
+      <button type="submit" class="btn btn-download">Search</button>
+    </form>
+
+    {% if query %}
+      {% if results %}
+        <p class="results-count" style="margin:1.5rem 0; color:var(--text-muted);">
+          Found {{ results|length }} result{{ results|length|pluralize }} for "{{ query }}"
+        </p>
+        <div class="blog-grid">
+          {% for post in results %}
+            <a href="{% url 'article_detail' post.slug %}" class="blog-card">
+              {% if post.featured_image %}
+                <div class="blog-card-img">
+                  <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" loading="lazy">
+                </div>
+              {% else %}
+                <div class="blog-card-img blog-card-placeholder">📄</div>
+              {% endif %}
+              <div class="blog-card-body">
+                <h2 class="blog-card-title">{{ post.title }}</h2>
+                <p class="blog-card-excerpt">{{ post.excerpt|truncatechars:120 }}</p>
+                <div class="blog-card-meta">
+                  <span>📅 {{ post.publish_date|date:"M d, Y" }}</span>
+                  <span>⏱ {{ post.reading_time }} min read</span>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state" style="margin-top:2rem;">
+          <div class="empty-icon">🔍</div>
+          <h3>No results found</h3>
+          <p>No articles match <em>"{{ query }}"</em>. Try a different search term.</p>
+          <div style="margin-top:1.5rem;">
+            <a href="{% url 'home' %}" class="btn btn-download">⬇ Download APK</a>
+            <a href="{% url 'blog' %}" class="btn btn-outline" style="margin-left:1rem;">Browse Blog</a>
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="empty-state" style="margin-top:2rem;">
+        <div class="empty-icon">🔍</div>
+        <h3>Enter a search term</h3>
+        <p>Type something in the search box above to find articles and guides.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

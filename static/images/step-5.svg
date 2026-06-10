@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <filter id="glow5"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect width="800" height="450" fill="#0f0f0f"/>
+
+  <!-- Step badge -->
+  <rect x="30" y="30" width="64" height="24" rx="12" fill="#dc2626"/>
+  <text x="62" y="47" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="11" font-weight="700">STEP 5</text>
+
+  <!-- Left text -->
+  <text x="30" y="100" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="26" font-weight="800">Find the</text>
+  <text x="30" y="133" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="26" font-weight="800">Downloaded File</text>
+  <text x="30" y="175" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="14">Open your Downloads folder or</text>
+  <text x="30" y="196" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="14">pull down the notification bar.</text>
+
+  <!-- Two ways label -->
+  <text x="30" y="248" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">TWO WAYS TO FIND IT:</text>
+  <rect x="30" y="256" width="110" height="38" rx="7" fill="#1c1c1e" stroke="#2c2c2e" stroke-width="1"/>
+  <text x="85" y="272" text-anchor="middle" fill="#a1a1aa" font-size="10">📁</text>
+  <text x="85" y="287" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="9">Downloads</text>
+  <rect x="150" y="256" width="110" height="38" rx="7" fill="#1c1c1e" stroke="#2c2c2e" stroke-width="1"/>
+  <text x="205" y="272" text-anchor="middle" fill="#a1a1aa" font-size="10">🔔</text>
+  <text x="205" y="287" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="9">Notification bar</text>
+
+  <text x="30" y="340" fill="#71717a" font-family="system-ui,sans-serif" font-size="12">Look for a file named</text>
+  <text x="30" y="358" fill="#dc2626" font-family="system-ui,sans-serif" font-size="12" font-weight="600">StuntBikeExtreme.apk</text>
+
+  <!-- Phone mockup -->
+  <rect x="310" y="28" width="240" height="394" rx="28" fill="#1c1c1e" stroke="#3a3a3c" stroke-width="2"/>
+  <rect x="395" y="28" width="70" height="16" rx="8" fill="#0f0f0f"/>
+  <rect x="319" y="68" width="222" height="308" fill="#141414"/>
+  <rect x="395" y="394" width="70" height="5" rx="3" fill="#3a3a3c"/>
+  <rect x="308" y="130" width="4" height="50" rx="2" fill="#3a3a3c"/>
+  <rect x="308" y="192" width="4" height="50" rx="2" fill="#3a3a3c"/>
+  <rect x="546" y="155" width="4" height="60" rx="2" fill="#3a3a3c"/>
+
+  <!-- Notification shade pulled down -->
+  <rect x="319" y="68" width="222" height="180" rx="0" fill="#252528"/>
+  <!-- Shade handle at top -->
+  <rect x="319" y="68" width="222" height="24" fill="#1c1c1e"/>
+  <text x="329" y="82" fill="#a1a1aa" font-size="9">9:41</text>
+  <text x="505" y="82" fill="#a1a1aa" font-size="9">📶 🔋</text>
+  <!-- Shade drag indicator -->
+  <rect x="420" y="90" width="20" height="3" rx="2" fill="#3a3a3c"/>
+
+  <!-- Quick toggles -->
+  <text x="340" y="115" fill="#a1a1aa" font-size="14">📶</text>
+  <text x="375" y="115" fill="#a1a1aa" font-size="14">📡</text>
+  <text x="410" y="115" fill="#a1a1aa" font-size="14">🔵</text>
+  <text x="445" y="115" fill="#a1a1aa" font-size="14">🔦</text>
+  <text x="480" y="115" fill="#a1a1aa" font-size="14">🔕</text>
+
+  <!-- Brightness bar -->
+  <rect x="330" y="124" width="200" height="6" rx="3" fill="#3a3a3c"/>
+  <rect x="330" y="124" width="130" height="6" rx="3" fill="#3b82f6"/>
+
+  <!-- Download complete notification — highlighted -->
+  <rect x="325" y="138" width="210" height="64" rx="10" fill="#1c1c1e" stroke="#dc2626" stroke-width="1.5" filter="url(#glow5)"/>
+  <text x="340" y="157" fill="#71717a" font-family="system-ui,sans-serif" font-size="8">DOWNLOAD COMPLETE • CHROME</text>
+  <text x="340" y="172" fill="#f5f5f5" font-family="system-ui,sans-serif" font-size="10" font-weight="600">StuntBikeExtreme.apk</text>
+  <text x="340" y="186" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="9">85 MB  •  Tap to install</text>
+  <text x="496" y="172" fill="#22c55e" font-family="system-ui,sans-serif" font-size="9">✓ Done</text>
+  <!-- APK icon in notification -->
+  <rect x="492" y="178" width="28" height="20" rx="4" fill="#dc2626"/>
+  <text x="506" y="192" text-anchor="middle" fill="white" font-size="8">APK</text>
+
+  <!-- Arrow pointing to notification -->
+  <path d="M535 170 Q565 170 535 165" fill="none"/>
+
+  <!-- Second notification -->
+  <rect x="325" y="210" width="210" height="40" rx="10" fill="#1c1c1e" stroke="#2c2c2e" stroke-width="1"/>
+  <text x="340" y="228" fill="#71717a" font-family="system-ui,sans-serif" font-size="8">MESSAGES</text>
+  <text x="340" y="243" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="9">2 new messages</text>
+
+  <!-- Phone screen content below shade -->
+  <rect x="319" y="248" width="222" height="128" fill="#141414"/>
+  <!-- App icons grid (home screen) -->
+  <rect x="330" y="260" width="36" height="36" rx="8" fill="#252528"/>
+  <text x="348" y="283" text-anchor="middle" font-size="16">📱</text>
+  <rect x="374" y="260" width="36" height="36" rx="8" fill="#252528"/>
+  <text x="392" y="283" text-anchor="middle" font-size="16">🎮</text>
+  <rect x="418" y="260" width="36" height="36" rx="8" fill="#252528"/>
+  <text x="436" y="283" text-anchor="middle" font-size="16">📁</text>
+  <rect x="462" y="260" width="36" height="36" rx="8" fill="#252528"/>
+  <text x="480" y="283" text-anchor="middle" font-size="16">⚙️</text>
+
+  <!-- Arrow pointing at the download notification -->
+  <line x1="286" y1="358" x2="380" y2="180" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>
+  <circle cx="380" cy="180" r="4" fill="#dc2626"/>
+  <text x="250" y="370" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="10">Tap here</text>
+
+  <!-- Right tips -->
+  <text x="590" y="200" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">Pull down from</text>
+  <text x="590" y="218" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">the top of screen</text>
+  <text x="590" y="255" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">Tap the download</text>
+  <text x="590" y="273" fill="#dc2626" font-family="system-ui,sans-serif" font-size="11" font-weight="600">notification</text>
+  <text x="590" y="291" fill="#71717a" font-family="system-ui,sans-serif" font-size="11">to open the file</text>
+</svg>

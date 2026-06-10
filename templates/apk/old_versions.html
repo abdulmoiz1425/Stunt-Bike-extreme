@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="{% url 'home' %}">Home</a> &rsaquo; <span>Old Versions</span></nav>
+    <h1 class="page-title">Stunt Bike Extreme — Version Archive</h1>
+    <p class="page-subtitle">Download any previous version of Stunt Bike Extreme APK</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Platform Filter -->
+    <div class="platform-filter">
+      {% for p in all_platforms %}
+        <a href="?platform={{ p.platform_type }}"
+           class="filter-btn {% if selected_platform.platform_type == p.platform_type %}active{% endif %}">
+          {{ p.get_icon }} {{ p.name }}
+        </a>
+      {% endfor %}
+    </div>
+
+    {% if versions %}
+      <div class="table-wrap" style="margin-top:2rem;">
+        <table class="versions-table">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>File Size</th>
+              <th>Android Requirement</th>
+              <th>Release Date</th>
+              <th>Downloads</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for v in versions %}
+              <tr {% if v.is_latest %}class="latest-row"{% endif %}>
+                <td>
+                  v{{ v.version }}
+                  {% if v.is_latest %}<span class="badge-latest">Latest</span>{% endif %}
+                </td>
+                <td>{{ v.file_size }}</td>
+                <td>{{ v.android_requirement }}</td>
+                <td>{{ v.release_date|date:"F d, Y" }}</td>
+                <td>{{ v.download_count }}</td>
+                <td>
+                  <a href="{% url 'download_apk' v.id %}" class="btn btn-sm btn-download">⬇ Download</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <div class="empty-icon">📦</div>
+        <h3>No versions found</h3>
+        <p>No APK versions are available for this platform yet.</p>
+        <a href="{% url 'home' %}" class="btn btn-download">Go to Home</a>
+      </div>
+    {% endif %}
+
+    <div class="info-box" style="margin-top:2rem;">
+      <strong>⚠️ Note:</strong> We recommend downloading the latest version for the best experience and security. Older versions are provided for compatibility purposes only.
+    </div>
+  </div>
+</section>
+{% endblock %}

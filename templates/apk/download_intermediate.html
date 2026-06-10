@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="section" style="min-height:80vh; display:flex; align-items:center;">
+  <div class="container">
+    <div class="dl-page">
+
+      <!-- Header -->
+      <div class="dl-header">
+        <div class="dl-icon">{{ platform.get_icon }}</div>
+        <div>
+          <nav class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a> &rsaquo;
+            <a href="{% url platform.get_url_name %}">{{ platform.name }}</a> &rsaquo;
+            <span>Download</span>
+          </nav>
+          <h1 class="dl-title">{{ platform.name }}</h1>
+          <p class="dl-version">Version {{ version.version }} &bull; {{ version.file_size }} &bull; {{ version.android_requirement }}</p>
+        </div>
+      </div>
+
+      {% if no_file %}
+        <!-- No file configured -->
+        <div class="dl-card dl-card-warn">
+          <div class="dl-card-icon">⚠️</div>
+          <h2>Download Link Not Available</h2>
+          <p>The download file for this version hasn't been configured yet. Please check back soon or contact us.</p>
+          <div class="dl-actions">
+            <a href="{% url 'home' %}" class="btn btn-download btn-lg">← Back to Home</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">Contact Us</a>
+          </div>
+        </div>
+
+      {% else %}
+        <!-- Main download card -->
+        <div class="dl-card">
+          <div class="dl-ready-badge">✅ File Ready</div>
+          <h2 class="dl-card-title">Your download is ready!</h2>
+          <p class="dl-card-desc">
+            Click the button below to start downloading
+            <strong>{{ platform.name }} v{{ version.version }}</strong>.
+          </p>
+
+          <!-- APK info strip -->
+          <div class="dl-info-strip">
+            <div class="dl-info-item">
+              <span class="dl-info-label">Version</span>
+              <span class="dl-info-val">{{ version.version }}</span>
+            </div>
+            <div class="dl-info-item">
+              <span class="dl-info-label">Size</span>
+              <span class="dl-info-val">{{ version.file_size }}</span>
+            </div>
+            <div class="dl-info-item">
+              <span class="dl-info-label">Android</span>
+              <span class="dl-info-val">{{ version.android_requirement }}</span>
+            </div>
+            <div class="dl-info-item">
+              <span class="dl-info-label">Rating</span>
+              <span class="dl-info-val">⭐ {{ version.rating }}</span>
+            </div>
+            <div class="dl-info-item">
+              <span class="dl-info-label">Released</span>
+              <span class="dl-info-val">{{ version.release_date|date:"M d, Y" }}</span>
+            </div>
+          </div>
+
+          <!-- THE DOWNLOAD BUTTON -->
+          <a href="{% url 'serve_download' version.id %}"
+             class="btn btn-download btn-xl dl-main-btn"
+             id="dlBtn">
+            ⬇ Download Now — Free
+          </a>
+          <p class="dl-note">Safe &amp; virus-free &bull; No registration required</p>
+        </div>
+
+        <!-- Installation steps -->
+        <div class="dl-steps-card">
+          <h3 class="dl-steps-title">📋 How to Install After Download</h3>
+          <div class="dl-steps">
+            <div class="dl-step">
+              <div class="dl-step-num">1</div>
+              <div class="dl-step-text">
+                Go to <strong>Settings &rsaquo; Security</strong> on your Android device and
+                enable <strong>"Unknown Sources"</strong> (or "Install unknown apps").
+              </div>
+            </div>
+            <div class="dl-step">
+              <div class="dl-step-num">2</div>
+              <div class="dl-step-text">
+                Open your <strong>Downloads folder</strong> or pull down the notification
+                bar and tap the downloaded APK file.
+              </div>
+            </div>
+            <div class="dl-step">
+              <div class="dl-step-num">3</div>
+              <div class="dl-step-text">
+                Tap <strong>Install</strong> when prompted and wait about 10–20 seconds.
+              </div>
+            </div>
+            <div class="dl-step">
+              <div class="dl-step-num">4</div>
+              <div class="dl-step-text">
+                Tap <strong>Open</strong> to launch {{ platform.name }} and start playing! 🏍️
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back link -->
+        <div class="text-center" style="margin-top:1.5rem;">
+          <a href="{% url platform.get_url_name %}" class="btn btn-outline">
+            ← Back to {{ platform.name }} Page
+          </a>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('dlBtn')?.addEventListener('click', function () {
+  this.innerHTML = '⏳ Starting Download…';
+  this.style.pointerEvents = 'none';
+  this.style.opacity = '0.8';
+});
+</script>
+{% endblock %}
