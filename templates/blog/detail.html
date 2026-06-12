@@ -5,13 +5,54 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   "headline": "{{ article.title|escapejs }}",
+  "description": "{{ article.effective_meta_description|escapejs }}",
+  {% if article.featured_image %}
+  "image": "{{ site_domain }}{{ article.featured_image.url }}",
+  {% endif %}
   "datePublished": "{{ article.publish_date|date:'c' }}",
+  "dateModified": "{{ article.publish_date|date:'c' }}",
+  "mainEntityOfPage": "{{ canonical_url }}",
   "author": {
     "@type": "Person",
     "name": "{{ article.author.get_full_name|default:article.author.username|escapejs }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site_settings.site_name|escapejs }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{% if site_settings.logo %}{{ site_domain }}{{ site_settings.logo.url }}{% else %}{{ site_domain }}{% static 'images/favicon.svg' %}{% endif %}"
+    }
   }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site_domain }}{% url 'home' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "{{ site_domain }}{% url 'blog' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ article.title|escapejs }}",
+      "item": "{{ canonical_url }}"
+    }
+  ]
 }
 </script>
 {% endblock %}

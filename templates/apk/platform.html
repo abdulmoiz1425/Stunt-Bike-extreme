@@ -1,6 +1,129 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block structured_data %}
+{% if latest_version %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{% if platform.platform_type == 'pc' %}SoftwareApplication{% else %}MobileApplication{% endif %}",
+  "name": "{{ platform.name|escapejs }}",
+  "operatingSystem": "{% if platform.platform_type == 'ios' %}iOS{% elif platform.platform_type == 'pc' %}Windows, macOS{% else %}{{ latest_version.android_requirement|escapejs }}{% endif %}",
+  "applicationCategory": "GameApplication",
+  "softwareVersion": "{{ latest_version.version|escapejs }}",
+  "fileSize": "{{ latest_version.file_size|escapejs }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Hyperkani"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ latest_version.rating }}",
+    "ratingCount": "50000"
+  }{% if screenshots %},
+  "screenshot": [
+    {% for shot in screenshots %}
+    {
+      "@type": "ImageObject",
+      "url": "{{ site_domain }}{{ shot.image.url }}"{% if shot.caption %},
+      "caption": "{{ shot.caption|escapejs }}"{% endif %}
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]{% endif %}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "{% if platform.platform_type == 'pc' %}SoftwareApplication{% else %}MobileApplication{% endif %}",
+    "name": "{{ platform.name|escapejs }}",
+    "applicationCategory": "GameApplication"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site_settings.site_name|escapejs }}"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ latest_version.rating }}",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "reviewBody": "{{ platform.tagline|escapejs }}"
+}
+</script>
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site_domain }}{% url 'home' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ platform.name|escapejs }}",
+      "item": "{{ canonical_url }}"
+    }
+  ]
+}
+</script>
+
+{% if faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for faq in faqs %}
+    {
+      "@type": "Question",
+      "name": "{{ faq.question|escapejs }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ faq.answer|escapejs }}"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+{% if platform.get_installation_steps %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Install {{ platform.name|escapejs }}",
+  "step": [
+    {% for step in platform.get_installation_steps %}
+    {
+      "@type": "HowToStep",
+      "position": {{ forloop.counter }},
+      "text": "{{ step|escapejs }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 
 <!-- PAGE HERO -->

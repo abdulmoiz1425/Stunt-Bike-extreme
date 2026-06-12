@@ -1,6 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site_domain }}{% url 'home' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ platform.name|escapejs }}",
+      "item": "{{ site_domain }}{% url platform.get_url_name %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Download",
+      "item": "{{ canonical_url }}"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="section" style="min-height:80vh; display:flex; align-items:center;">
   <div class="container">

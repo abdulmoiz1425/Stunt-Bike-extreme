@@ -6,6 +6,7 @@
   <title>{% block title %}{{ page_title|default:"Stunt Bike Extreme APK Download" }}{% endblock %}</title>
   <meta name="description" content="{% block meta_description %}{{ meta_description|default:"Download Stunt Bike Extreme APK latest version. Free motorcycle stunt racing game for Android, PC, iOS, Smart TV and TV Box." }}{% endblock %}">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ canonical_url }}">
   <meta property="og:title" content="{% block og_title %}{{ page_title }}{% endblock %}">
   <meta property="og:description" content="{{ meta_description }}">
   <meta property="og:type" content="website">
@@ -18,6 +19,33 @@
   <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}">
   <link rel="apple-touch-icon" href="{% static 'images/favicon.svg' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site_settings.site_name|escapejs }}",
+    "url": "{{ site_domain }}/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ site_domain }}{% url 'search' %}?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{{ page_title|default:"Stunt Bike Extreme APK Download"|escapejs }}",
+    "description": "{{ meta_description|default:"Download Stunt Bike Extreme APK latest version. Free motorcycle stunt racing game for Android, PC, iOS, Smart TV and TV Box."|escapejs }}",
+    "url": "{{ canonical_url }}",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "{{ site_settings.site_name|escapejs }}",
+      "url": "{{ site_domain }}/"
+    }
+  }
+  </script>
   {% block structured_data %}{% endblock %}
 </head>
 <body>

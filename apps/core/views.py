@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.db.models import Q
 
@@ -24,7 +26,7 @@ def home(request):
         'recent_posts': recent_posts,
         'platforms': platforms,
         'page_title': 'Stunt Bike Extreme APK Download - Latest Version',
-        'meta_description': 'Download Stunt Bike Extreme APK latest version for Android. Free motorcycle stunt racing game with stunning graphics and thrilling gameplay.',
+        'meta_description': 'Play Stunt Bike Extreme 2026 online or download the APK for Android. Enjoy bike stunts, levels, upgrades, and smooth racing gameplay.',
     })
 
 
@@ -79,6 +81,17 @@ def search(request):
         'results': results,
         'page_title': f'Search: {query} - Stunt Bike Extreme',
     })
+
+
+def robots_txt(request):
+    lines = [
+        'User-agent: *',
+        'Disallow: /admin/',
+        'Allow: /',
+        '',
+        f'Sitemap: {settings.SITE_DOMAIN}/sitemap.xml',
+    ]
+    return HttpResponse('\n'.join(lines), content_type='text/plain')
 
 
 def handler404(request, exception):

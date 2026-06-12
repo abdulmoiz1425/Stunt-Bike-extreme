@@ -6,17 +6,99 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "MobileApplication",
   "name": "Stunt Bike Extreme",
-  "operatingSystem": "Android",
+  "operatingSystem": "{{ latest_version.android_requirement|escapejs }}",
   "applicationCategory": "GameApplication",
-  "author": {"@type": "Organization", "name": "Hyperkani"},
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "softwareVersion": "{{ latest_version.version|escapejs }}",
+  "fileSize": "{{ latest_version.file_size|escapejs }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Hyperkani"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "{{ latest_version.rating }}",
     "ratingCount": "50000"
-  }
+  }{% if screenshots %},
+  "screenshot": [
+    {% for shot in screenshots %}
+    {
+      "@type": "ImageObject",
+      "url": "{{ site_domain }}{{ shot.image.url }}"{% if shot.caption %},
+      "caption": "{{ shot.caption|escapejs }}"{% endif %}
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]{% endif %}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "MobileApplication",
+    "name": "Stunt Bike Extreme",
+    "operatingSystem": "{{ latest_version.android_requirement|escapejs }}",
+    "applicationCategory": "GameApplication"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site_settings.site_name|escapejs }}"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ latest_version.rating }}",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "reviewBody": "{% if platform %}{{ platform.tagline|escapejs }}{% else %}The Ultimate Motorcycle Stunt Racing Game{% endif %}"
+}
+</script>
+{% endif %}
+
+{% if faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for faq in faqs %}
+    {
+      "@type": "Question",
+      "name": "{{ faq.question|escapejs }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ faq.answer|escapejs }}"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+{% if platform %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Install Stunt Bike Extreme APK on Android",
+  "step": [
+    {% for step in platform.get_installation_steps %}
+    {
+      "@type": "HowToStep",
+      "position": {{ forloop.counter }},
+      "text": "{{ step|escapejs }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
 }
 </script>
 {% endif %}
@@ -31,7 +113,7 @@
       <div class="hero-text">
         <div class="hero-badge">🏍️ Android Game</div>
         <h1 class="hero-title">
-          {% if platform %}{{ platform.name }}{% else %}Stunt Bike Extreme APK{% endif %}
+          Stunt Bike Extreme 2026 – Play Online &amp; APK Download
         </h1>
         <p class="hero-tagline">
           {% if platform %}{{ platform.tagline }}{% else %}The Ultimate Motorcycle Stunt Racing Game{% endif %}

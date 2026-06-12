@@ -9,4 +9,5 @@ urlpatterns = [
     path('disclaimer/', views.disclaimer, name='disclaimer'),
     path('cookie-policy/', views.cookie_policy, name='cookie_policy'),
     path('search/', views.search, name='search'),
+    path('robots.txt', views.robots_txt, name='robots_txt'),
 ]
