@@ -86,8 +86,7 @@ def serve_download(request, version_id):
         file_path = version.apk_file.path
         if not os.path.exists(file_path):
             raise Http404('APK file not found on server.')
-        filename = os.path.basename(file_path)
-        response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
+        response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename='Stuntbike.apk')
         return response
 
     if version.external_url and version.external_url != '#':
