@@ -11,6 +11,11 @@ ALLOWED_HOSTS = ['*']
 
 SITE_DOMAIN = 'https://stuntbikeextreme.com'
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://stuntbikeextreme.com',
+    'https://www.stuntbikeextreme.com',
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
