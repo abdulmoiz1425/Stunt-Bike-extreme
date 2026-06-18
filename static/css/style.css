@@ -1349,10 +1349,9 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  overflow: hidden;
   display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
+  flex-direction: column;
   transition: all var(--transition);
 }
 .feature-rich-card:hover {
@@ -1360,8 +1359,11 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-card-hover);
   transform: translateY(-2px);
 }
-.frc-icon { font-size: 2rem; flex-shrink: 0; margin-top: 0.1rem; }
-.frc-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.4rem; }
+.frc-image { width: 100%; height: 180px; object-fit: cover; display: block; }
+.frc-body { padding: 1.25rem 1.5rem 1.5rem; }
+.frc-title-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.frc-icon { font-size: 1.5rem; flex-shrink: 0; }
+.frc-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0; }
 .frc-desc { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.65; margin: 0; }
 
 /* --- HOW TO PLAY GUIDE --- */
