@@ -6,7 +6,7 @@ class SiteSettings(models.Model):
     tagline = models.CharField(max_length=200, default='The Ultimate Motorcycle Stunt Racing Game')
     logo = models.ImageField(upload_to='site/', blank=True, null=True)
     favicon = models.ImageField(upload_to='site/', blank=True, null=True)
-    contact_email = models.EmailField(default='admin@stuntbikeextreme.com')
+    contact_email = models.EmailField(default='admin@stuntbikextreme.com')
     facebook_url = models.URLField(blank=True)
     twitter_url = models.URLField(blank=True)
     youtube_url = models.URLField(blank=True)

@@ -46,7 +46,7 @@
   <!-- Browser with download in progress -->
   <rect x="319" y="88" width="222" height="30" fill="#252528"/>
   <rect x="329" y="96" width="142" height="14" rx="7" fill="#3a3a3c"/>
-  <text x="400" y="106" text-anchor="middle" fill="#3b82f6" font-size="8">stuntbikeextreme.com</text>
+  <text x="400" y="106" text-anchor="middle" fill="#3b82f6" font-size="8">stuntbikextreme.com</text>
   <text x="474" y="106" fill="#71717a" font-size="11">↺</text>
 
   <!-- Page content (dimmed, blurred feel) -->

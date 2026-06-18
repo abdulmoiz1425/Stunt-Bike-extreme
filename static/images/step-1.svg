@@ -23,7 +23,7 @@
   <!-- Action indicator -->
   <rect x="30" y="225" width="230" height="44" rx="8" fill="#1c1c1e" stroke="#2c2c2e" stroke-width="1"/>
   <text x="50" y="243" fill="#71717a" font-family="system-ui,sans-serif" font-size="10">🌐  ADDRESS BAR</text>
-  <text x="50" y="260" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="12">stuntbikeextreme.com</text>
+  <text x="50" y="260" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="12">stuntbikextreme.com</text>
 
   <text x="30" y="310" fill="#71717a" font-family="system-ui,sans-serif" font-size="12">Type or search the website name</text>
   <text x="30" y="328" fill="#71717a" font-family="system-ui,sans-serif" font-size="12">in your browser's address bar.</text>
@@ -48,7 +48,7 @@
   <text x="349" y="90" fill="#3a3a3c" font-size="14">→</text>
   <!-- URL bar -->
   <rect x="365" y="76" width="140" height="20" rx="10" fill="#3a3a3c"/>
-  <text x="435" y="90" text-anchor="middle" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="9">stuntbikeextreme.com</text>
+  <text x="435" y="90" text-anchor="middle" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="9">stuntbikextreme.com</text>
   <!-- Reload -->
   <text x="514" y="90" fill="#71717a" font-size="13">↺</text>
 

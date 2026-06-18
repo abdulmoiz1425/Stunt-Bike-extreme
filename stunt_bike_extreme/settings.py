@@ -9,11 +9,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-SITE_DOMAIN = 'https://stuntbikeextreme.com'
+SITE_DOMAIN = 'https://stuntbikextreme.com'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://stuntbikeextreme.com',
-    'https://www.stuntbikeextreme.com',
+    'https://stuntbikextreme.com',
+    'https://www.stuntbikextreme.com',
 ]
 
 INSTALLED_APPS = [
@@ -91,7 +91,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ADMIN_EMAIL = 'admin@stuntbikeextreme.com'
+ADMIN_EMAIL = 'admin@stuntbikextreme.com'
 
 LOGIN_URL = '/admin/login/'
 LOGIN_REDIRECT_URL = '/admin/'
