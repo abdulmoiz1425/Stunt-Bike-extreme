@@ -1,5 +1,7 @@
+from django import forms
 from django.contrib import admin
 from django.utils.html import format_html
+from django_ckeditor_5.widgets import CKEditor5Widget
 from .models import Article, Comment
 
 
@@ -10,8 +12,17 @@ class CommentInline(admin.TabularInline):
     readonly_fields = ('name', 'email', 'body', 'created_at')
 
 
+class ArticleAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditor5Widget(config_name='default'))
+
+    class Meta:
+        model = Article
+        fields = '__all__'
+
+
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
+    form = ArticleAdminForm
     list_display = ('title', 'author', 'publish_date', 'is_published', 'reading_time_display', 'comment_count')
     list_filter = ('is_published', 'author', 'publish_date')
     list_editable = ('is_published',)
