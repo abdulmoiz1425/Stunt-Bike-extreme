@@ -8,7 +8,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Branding', {'fields': ('site_name', 'tagline', 'logo', 'favicon')}),
         ('Contact', {'fields': ('contact_email',)}),
-        ('Social Media', {'fields': ('facebook_url', 'twitter_url', 'youtube_url', 'instagram_url')}),
+        ('Social Media', {'fields': ('pinterest_url', 'medium_url')}),
         ('Analytics', {'fields': ('google_analytics_id',)}),
         ('Footer', {'fields': ('footer_text', 'cookie_notice')}),
     )

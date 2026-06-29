@@ -10,7 +10,7 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         return [
-            'home', 'about', 'privacy', 'terms', 'disclaimer', 'cookie_policy',
+            'home', 'play_online', 'about', 'privacy', 'terms', 'disclaimer', 'cookie_policy',
             'blog', 'contact', 'old_versions',
             'mod_apk', 'for_pc', 'for_ios', 'for_smart_tv', 'for_tv_box',
         ]

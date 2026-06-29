@@ -30,6 +30,13 @@ def home(request):
     })
 
 
+def play_online(request):
+    return render(request, 'pages/play_online.html', {
+        'page_title': 'Stunt Bike Extreme Play Online - Free Browser Game, No APK Needed',
+        'meta_description': 'Play Stunt Bike Extreme online in your browser for free. No download, no APK install. Learn the controls, use full screen mode, and start riding instantly.',
+    })
+
+
 def about(request):
     return render(request, 'pages/about.html', {
         'page_title': 'About Us - Stunt Bike Extreme',

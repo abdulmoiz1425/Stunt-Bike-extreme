@@ -75,11 +75,12 @@
     <nav class="main-nav" id="mainNav">
       <ul class="nav-list">
         <li><a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+        <li><a href="{% url 'play_online' %}" class="nav-link {% if request.resolver_match.url_name == 'play_online' %}active{% endif %}">🎮 Play Online</a></li>
         {% for platform in nav_platforms %}
-          {% if platform.platform_type != 'android' %}
+          {% if platform.platform_type != 'android' and platform.platform_type != 'mod' %}
             <li>
               <a href="{% url platform.get_url_name %}" class="nav-link">
-                {{ platform.get_icon }} {{ platform.platform_type|upper|slice:":3" }}{% if platform.platform_type == 'mod' %} APK{% elif platform.platform_type == 'smart_tv' %} TV{% elif platform.platform_type == 'tv_box' %} Box{% elif platform.platform_type == 'ios' %}{% elif platform.platform_type == 'pc' %}{% endif %}
+                {{ platform.get_icon }} {{ platform.platform_type|upper|slice:":3" }}{% if platform.platform_type == 'smart_tv' %} TV{% elif platform.platform_type == 'tv_box' %} Box{% elif platform.platform_type == 'ios' %}{% elif platform.platform_type == 'pc' %}{% endif %}
               </a>
             </li>
           {% endif %}
@@ -117,17 +118,11 @@
         <h3 class="footer-heading">🏍️ {{ site_settings.site_name }}</h3>
         <p class="footer-desc">{{ site_settings.tagline }}</p>
         <div class="social-links">
-          {% if site_settings.facebook_url %}
-            <a href="{{ site_settings.facebook_url }}" class="social-link" target="_blank" rel="noopener">FB</a>
+          {% if site_settings.pinterest_url %}
+            <a href="{{ site_settings.pinterest_url }}" class="social-link" target="_blank" rel="noopener">PIN</a>
           {% endif %}
-          {% if site_settings.twitter_url %}
-            <a href="{{ site_settings.twitter_url }}" class="social-link" target="_blank" rel="noopener">TW</a>
-          {% endif %}
-          {% if site_settings.youtube_url %}
-            <a href="{{ site_settings.youtube_url }}" class="social-link" target="_blank" rel="noopener">YT</a>
-          {% endif %}
-          {% if site_settings.instagram_url %}
-            <a href="{{ site_settings.instagram_url }}" class="social-link" target="_blank" rel="noopener">IG</a>
+          {% if site_settings.medium_url %}
+            <a href="{{ site_settings.medium_url }}" class="social-link" target="_blank" rel="noopener">MED</a>
           {% endif %}
         </div>
       </div>

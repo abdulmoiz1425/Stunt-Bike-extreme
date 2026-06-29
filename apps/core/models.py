@@ -7,10 +7,8 @@ class SiteSettings(models.Model):
     logo = models.ImageField(upload_to='site/', blank=True, null=True)
     favicon = models.ImageField(upload_to='site/', blank=True, null=True)
     contact_email = models.EmailField(default='admin@stuntbikextreme.com')
-    facebook_url = models.URLField(blank=True)
-    twitter_url = models.URLField(blank=True)
-    youtube_url = models.URLField(blank=True)
-    instagram_url = models.URLField(blank=True)
+    pinterest_url = models.URLField(blank=True)
+    medium_url = models.URLField(blank=True)
     google_analytics_id = models.CharField(max_length=50, blank=True)
     footer_text = models.TextField(
         default='Stunt Bike Extreme is a fan-dedicated APK download site. '
